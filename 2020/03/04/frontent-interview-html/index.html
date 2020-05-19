@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Front-end Interview Note 1 💪"><meta name="keywords" content="Front-end,Interview Questions"><meta name="author" content="HongLeee"><meta name="copyright" content="HongLeee"><title>Front-end Interview Note 1 💪 | Leee's World</title><link rel="shortcut icon" href="/a1.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-7147375581336623',
+  enable_page_level_ads: 'true'
+});
+</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166070746-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">HTML篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语义化"><span class="toc-number">1.0.1.</span> <span class="toc-text">语义化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动设备忽略将页面中的数字识别为电话号码的方法"><span class="toc-number">1.0.2.</span> <span class="toc-text">移动设备忽略将页面中的数字识别为电话号码的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-vs-https"><span class="toc-number">1.0.3.</span> <span class="toc-text">http vs https :</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#websocket"><span class="toc-number">1.0.4.</span> <span class="toc-text">websocket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie、sessionStorage、localStorage的区别"><span class="toc-number">1.0.5.</span> <span class="toc-text">Cookie、sessionStorage、localStorage的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie-session区别"><span class="toc-number">1.0.6.</span> <span class="toc-text">cookie session区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Doctype作用-严格模式与混杂模式如何区分？它们有何意义"><span class="toc-number">1.0.7.</span> <span class="toc-text">Doctype作用?严格模式与混杂模式如何区分？它们有何意义?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器缓存，强-协商缓存"><span class="toc-number">1.0.8.</span> <span class="toc-text">浏览器缓存，强/协商缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#304状态码"><span class="toc-number">1.0.9.</span> <span class="toc-text">304状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端优化"><span class="toc-number">1.0.10.</span> <span class="toc-text">前端优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GET和POST的区别"><span class="toc-number">1.0.11.</span> <span class="toc-text">GET和POST的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器渲染原理？"><span class="toc-number">1.0.12.</span> <span class="toc-text">浏览器渲染原理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入url会发生什么？"><span class="toc-number">1.0.13.</span> <span class="toc-text">输入url会发生什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#描述一下XSS和CRSF攻击？防御方法？"><span class="toc-number">1.0.14.</span> <span class="toc-text">描述一下XSS和CRSF攻击？防御方法？</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/05/11/YYYDdf.jpg"></div><div class="author-info__name text-center">HongLeee</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/WangHngLeee">+ Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">121</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">48</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">22</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Leee's World</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About Me</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Front-end Interview Note 1 💪</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 03-04-2020</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/">Interview</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/HTML/">HTML</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1>HTML篇</h1>
+<h3 id="语义化">语义化</h3>
+<p>HTML5语义化标签是指正确的标签包含了正确的内容，结构良好，便于阅读，比如nav表示导航条，类似的还有article、header、footer等等标签。</p>
+<h3 id="移动设备忽略将页面中的数字识别为电话号码的方法">移动设备忽略将页面中的数字识别为电话号码的方法</h3>
+<p>如果忽略页面中的数字识别为电话号码, 只要把这个默认行为关闭就行，只要一行代码:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;meta name = <span class="string">"format-detection"</span> content = <span class="string">"telephone=no"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="http-vs-https">http vs https :</h3>
+<p>定义：<br>
+http: 超文本传输协议，是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。<br>
+https: 是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。<br>
+区别：<br>
+Https协议需要ca证书，费用较高。<br>
+http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。<br>
+使用不同的链接方式，端口也不同，一般而言，http协议的端口为80，https的端口为443<br>
+http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h3 id="websocket">websocket</h3>
+<p>WebSocket是HTML5中的协议，支持持久连续，http协议不支持持久性连接。Http1.0和HTTP1.1都不支持持久性的链接，HTTP1.1中的keep-alive，将多个http请求合并为1个</p>
+<h3 id="Cookie、sessionStorage、localStorage的区别">Cookie、sessionStorage、localStorage的区别</h3>
+<p>共同点：都是保存在浏览器端，并且是同源的<br>
+cookie数据始终在同源的http请求中携带(即使不需要)，即cookie在浏览器和服务器间来回传递<br>
+cookie数据还有路径（path）的概念，可以限制。cookie只属于某个路径下<br>
+存储大小限制也不同–cookie数据不能超过4K，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如回话标识。<br>
+webStorage虽然也有存储大小的限制，但是比cookie大得多，可以达到5M或更大<br>
+数据的有效期不同 --sessionStorage：仅在当前的浏览器窗口关闭有效；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie：只在设置的cookie过期时间之前一直有效，即使窗口和浏览器关闭<br>
+作用域不同–sessionStorage：不在不同的浏览器窗口中共享，即使是同一个页面；localStorage：在所有同源窗口都是共享的；cookie：也是在所有同源窗口中共享的</p>
+<a id="more"></a>
+<h3 id="cookie-session区别">cookie session区别</h3>
+<p>1.cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>
+2.cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。<br>
+3.session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。<br>
+4.单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie</p>
+<h3 id="Doctype作用-严格模式与混杂模式如何区分？它们有何意义">Doctype作用?严格模式与混杂模式如何区分？它们有何意义?</h3>
+<p>Doctype声明于文档最前面，告诉浏览器以何种方式来渲染页面，这里有两种模式，严格模式和混杂模式。<br>
+严格模式的排版和JS 运作模式是 以该浏览器支持的最高标准运行。<br>
+混杂模式，向后兼容，模拟老式浏览器，防止浏览器无法兼容页面。</p>
+<h3 id="浏览器缓存，强-协商缓存">浏览器缓存，强/协商缓存</h3>
+<p>浏览器缓存是浏览器在本地磁盘对用户最近请求过的文档进行存储，当访问者再次访问同一页面时，浏览器就可以直接从本地磁盘加载文档。<br>
+缓存分为两种：强缓存和协商缓存，根据响应的header内容来决定。<br>
+强缓存相关字段有expires，cache-control。如果cache-control与expires同时存在的话，cache-control的优先级高于expires。<br>
+协商缓存相关字段有Last-Modified/If-Modified-Since，Etag/If-None-Match</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">缓存类型</th>
+<th style="text-align:right">获取资源形式</th>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">发送请求到服务器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">协商缓存</td>
+<td style="text-align:right">从缓存取</td>
+<td style="text-align:center">200(from cache)</td>
+<td style="text-align:center">否，直接从缓存取</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:right"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">强缓存</td>
+<td style="text-align:right">从缓存取</td>
+<td style="text-align:center">304(undefined)</td>
+<td style="text-align:center">是，通过服务器来告知缓存是否可用</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:right"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>什么时候用哪个？<br><br>
+因为服务器上的资源不是一直固定不变的，大多数情况下它会更新，这个时候如果我们还访问本地缓存，那么对用户来说，那就相当于资源没有更新，用户看到的还是旧的资源；所以我们希望服务器上的资源更新了浏览器就请求新的资源，没有更新就使用本地的缓存，以最大程度的减少因网络请求而产生的资源浪费。</p>
+<h3 id="304状态码">304状态码</h3>
+<p>304：如果客户端发送了一个带条件的GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个304状态码。</p>
+<h3 id="前端优化">前端优化</h3>
+<p>降低请求量：合并资源，减少HTTP 请求数，minify / gzip 压缩，webP，lazyLoad。<br><br>
+加快请求速度：预解析DNS，减少域名数，并行加载，CDN 分发。<br><br>
+缓存：HTTP 协议缓存请求，离线缓存 manifest，离线数据缓存localStorage。<br><br>
+渲染：JS/CSS优化，加载顺序，服务端渲染，pipeline。</p>
+<h3 id="GET和POST的区别">GET和POST的区别</h3>
+<p>get参数通过url传递，post放在request body中。<br>
+get请求在url中传递的参数是有长度限制的，而post没有。<br>
+get比post更不安全，因为参数直接暴露在url中，所以不能用来传递敏感信息。<br>
+get请求只能进行url编码，而post支持多种编码方式<br>
+get请求会浏览器主动cache，而post支持多种编码方式。<br>
+get请求参数会被完整保留在浏览历史记录里，而post中的参数不会被保留。<br>
+GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。<br>
+GET产生一个TCP数据包；POST产生两个TCP数据包。</p>
+<h3 id="浏览器渲染原理？">浏览器渲染原理？</h3>
+<p>1）首先解析收到的文档，根据文档定义构建一棵 DOM 树，DOM 树是由 DOM 元素及属性节点组成的。<br>
+2）然后对 CSS 进行解析，生成 CSSOM 规则树。<br>
+（3）根据 DOM 树和 CSSOM 规则树构建渲染树。渲染树的节点被称为渲染对象，渲染对象是一个包含有颜色和大小等属性的矩<br>
+形，渲染对象和 DOM 元素相对应，但这种对应关系不是一对一的，不可见的 DOM 元素不会被插入渲染树。还有一些 DOM<br>
+元素对应几个可见对象，它们一般是一些具有复杂结构的元素，无法用一个矩形来描述。<br>
+（4）当渲染对象被创建并添加到树中，它们并没有位置和大小，所以当浏览器生成渲染树以后，就会根据渲染树来进行布局（也<br>
+可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。通常这一行为也被称为“自动<br>
+重排”。<br>
+（5）布局阶段结束后是绘制阶段，遍历渲染树并调用渲染对象的 paint 方法将它们的内容显示在屏幕上，绘制使用 UI 基础组<br>
+件。</p>
+<h3 id="输入url会发生什么？">输入url会发生什么？</h3>
+<p>DNS解析–TCP连接–发送HTTP请求–服务器处理请求并返回HTTP报文–浏览器解析渲染页面–连接结束</p>
+<p>输入url后，首先需要找到这个url域名的服务器ip,为了寻找这个ip，浏览器首先会寻找缓存，查看缓存中是否有记录，缓存的查找记录为：浏览器缓存-》系统缓存-》路由器缓存，缓存中没有则查找系统的hosts文件中是否有记录，如果没有则查询DNS服务器，得到服务器的ip地址后，浏览器根据这个ip以及相应的端口号，构造一个http请求，这个请求报文会包括这次请求的信息，主要是请求方法，请求说明和请求附带的数据，并将这个http请求封装在一个tcp包中，这个tcp包会依次经过传输层，网络层，数据链路层，物理层到达服务器，服务器解析这个请求来作出响应，返回相应的html给浏览器，因为html是一个树形结构，浏览器根据这个html来构建DOM树，在dom树的构建过程中如果遇到JS脚本和外部JS连接，则会停止构建DOM树来执行和下载相应的代码，这会造成阻塞，这就是为什么推荐JS代码应该放在html代码的后面，之后根据外部央视，内部央视，内联样式构建一个CSS对象模型树CSSOM树，构建完成后和DOM树合并为渲染树，这里主要做的是排除非视觉节点，比如script，meta标签和排除display为none的节点，之后进行布局，布局主要是确定各个元素的位置和尺寸，之后是渲染页面，因为html文件中会含有图片，视频，音频等资源，在解析DOM的过程中，遇到这些都会进行并行下载，浏览器对每个域的并行下载数量有一定的限制，一般是4-6个，当然在这些所有的请求中我们还需要关注的就是缓存，缓存一般通过Cache-Control、Last-Modify、Expires等首部字段控制。 Cache-Control和Expires的区别在于Cache-Control使用相对时间，Expires使用的是基于服务器 端的绝对时间，因为存在时差问题，一般采用Cache-Control，在请求这些有设置了缓存的数据时，会先 查看是否过期，如果没有过期则直接使用本地缓存，过期则请求并在服务器校验文件是否修改，如果上一次 响应设置了ETag值会在这次请求的时候作为If-None-Match的值交给服务器校验，如果一致，继续校验 Last-Modified，没有设置ETag则直接验证Last-Modified，再决定是否返回304</p>
+<h3 id="描述一下XSS和CRSF攻击？防御方法？">描述一下XSS和CRSF攻击？防御方法？</h3>
+<p>XSS, 即为（Cross Site Scripting）, 中文名为跨站脚本, 是发生在目标用户的浏览器层面上的，当渲染DOM树的过程成发生了不在预期内执行的JS代码时，就发生了XSS攻击。大多数XSS攻击的主要方式是嵌入一段远程或者第三方域上的JS代码。实际上是在目标网站的作用域下执行了这段js代码。<br>
+CSRF（Cross Site Request Forgery，跨站请求伪造），字面理解意思就是在别的站点伪造了一个请求。专业术语来说就是在受害者访问一个网站时，其 Cookie 还没有过期的情况下，攻击者伪造一个链接地址发送受害者并欺骗让其点击，从而形成 CSRF 攻击。</p>
+<p>XSS防御的总体思路是：对输入(和URL参数)进行过滤，对输出进行编码。也就是对提交的所有内容进行过滤，对url中的参数进行过滤，过滤掉会导致脚本执行的相关内容；然后对动态输出到页面的内容进行html编码，使脚本无法在浏览器中执行。虽然对输入过滤可以被绕过，但是也还是会拦截很大一部分的XSS攻击。</p>
+<p>防御CSRF 攻击主要有三种策略：验证 HTTP Referer 字段；在请求地址中添加 token 并验证；在 HTTP 头中自定义属性并验证。</p>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Front-end/">Front-end</a><a class="post-meta__tags" href="/tags/Interview-Questions/">Interview Questions</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/03/04/front-end-interview-css/"><i class="fa fa-chevron-left">  </i><span>Front-end Interview Note 2 💪</span></a></div><div class="next-post pull-right"><a href="/2020/02/29/contest04/"><span>Weekly Contest 178 🏆</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'osOa9nOdMvJ7waVycMHyXcpL-gzGzoHsz',
+  appKey:'k2MfP5O1nYredg5XqqbEH6DC',
+  placeholder:'Add your first comment here!',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'en'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By HongLeee</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-glasses"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

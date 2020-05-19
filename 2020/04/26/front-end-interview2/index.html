@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Front-end Interview Note 5 💪"><meta name="keywords" content="Front-end,Interview Questions"><meta name="author" content="HongLeee"><meta name="copyright" content="HongLeee"><title>Front-end Interview Note 5 💪 | Leee's World</title><link rel="shortcut icon" href="/a1.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-7147375581336623',
+  enable_page_level_ads: 'true'
+});
+</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166070746-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DOCTYPE-作用"><span class="toc-number">1.1.</span> <span class="toc-text">&lt;!DOCTYPE&gt;作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准模式-兼容模式"><span class="toc-number">1.2.</span> <span class="toc-text">标准模式 &amp;&amp; 兼容模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#link-和-import区别"><span class="toc-number">1.3.</span> <span class="toc-text">link 和 @import区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器渲染原理"><span class="toc-number">1.4.</span> <span class="toc-text">浏览器渲染原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-和-defer-的作用和区别"><span class="toc-number">1.5.</span> <span class="toc-text">async 和 defer 的作用和区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOMContentLoaded-事件和-Load-事件的区别"><span class="toc-number">1.6.</span> <span class="toc-text">DOMContentLoaded 事件和 Load 事件的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML离线缓存"><span class="toc-number">1.7.</span> <span class="toc-text">HTML离线缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#attibute和property区别"><span class="toc-number">1.8.</span> <span class="toc-text">attibute和property区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.1.</span> <span class="toc-text"></span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/05/11/YYYDdf.jpg"></div><div class="author-info__name text-center">HongLeee</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/WangHngLeee">+ Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">121</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">48</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">22</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Leee's World</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About Me</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Front-end Interview Note 5 💪</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 04-26-2020</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/">Interview</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/HTML/">HTML</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1>HTML</h1>
+<h2 id="DOCTYPE-作用">&lt;!DOCTYPE&gt;作用</h2>
+<p>一般在html文档第一行声明。用来告知浏览器用什么文档解析标准来解析当前文档。解析模式分为标准模式和兼容模式。</p>
+<h2 id="标准模式-兼容模式">标准模式 &amp;&amp; 兼容模式</h2>
+<ul>
+<li>标准模式：标准模式的渲染方式和 JS 引擎的解析方式都是以该浏览器支持的最高标准运行。</li>
+<li>兼容模式：页面以宽松的向后兼容的方式显示，模拟老式浏览器的行为以防止站点无法工作。</li>
+</ul>
+<h2 id="link-和-import区别">link 和 @import区别</h2>
+<ul>
+<li>从属关系：link是基于html的语法，而@import是基于css的，css2.1之后才出现。</li>
+<li>加载顺序：link中的内容可以随页面其他内容一起加载，而@import中引入的css必须等其他全部加载完成后再开始加载。</li>
+<li>兼容性区别：link是基于html的，不存在兼容性问题。@import是css2.1之后才出现的，会存在部分IE5+之前的浏览器在不兼容的问题。</li>
+<li>DOM可操作性： 可以通过JS操作DOM改变link中的内容来改变样式；而DOM是基于文档的，无法使用@import来改变。</li>
+</ul>
+<h2 id="浏览器渲染原理">浏览器渲染原理</h2>
+<ol>
+<li>首先解析收到HTML的文件，构造DOM树。</li>
+<li>对CSS文件进行解析，构造CSSOM规则树。</li>
+<li>根据DOM和CSSOM规则树构造渲染树。</li>
+<li>当渲染对象被创建并添加到树中，它们并没有位置和大小，所以当浏览器生成渲染树以后，就会根据渲染树来进行布局（也叫做回流/重排）.</li>
+<li>布局阶段结束后是绘制阶段（重绘），遍历渲染树并调用渲染对象的 paint 方法将它们的内容显示在屏幕上，绘制使用 UI 基础组件。</li>
+</ol>
+<h2 id="async-和-defer-的作用和区别">async 和 defer 的作用和区别</h2>
+<ol>
+<li>如果script中没有async和defer，则浏览器会自动加载和执行指定对脚本文件，并暂停其他资源的加载和执行，知道script中的资源加载执行完毕。</li>
+<li><strong>defer</strong>：表示延迟执行引入的JS。JS加载时 HTML 并未停止解析，这两个过程是并行的。当整个 document 解析完毕后再执行脚本文件，在 DOMContentLoaded 事件触发之前完成。多个脚本按顺序执行。</li>
+<li><strong>async</strong>：表示异步执行引入JavaScript，与 defer 的区别在于，如果已经加载好，就会开始执行，也就是说它的执行仍然会阻塞文档的解析，只是它的加载过程不会阻塞。多个脚本的执行顺序无法保证。</li>
+</ol>
+<img src="https://segmentfault.com/img/bVWhRl?w=801&h=814">
+<h2 id="DOMContentLoaded-事件和-Load-事件的区别">DOMContentLoaded 事件和 Load 事件的区别</h2>
+<p>DOMContentLoaded在HTML文件全部加载完成后触发，并不需要等待css样式、图片图表等文件的加载。</p>
+<p>Load必须等到所有文件全部加载完成后才会触发。</p>
+<h2 id="HTML离线缓存">HTML离线缓存</h2>
+<p>原理：HTML5 的离线存储是基于一个新建的 .appcache 文件的缓存机制（不是存储技术），通过这个文件上的解析清单离线存储资源，这些资源就会像 cookie 一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。</p>
+<p>在线的情况下，浏览器发现 html 头部有 manifest 属性，它会请求 manifest 文件，如果是第一次访问 app ，那么浏览器就会根据 manifest 文件的内容下载相应的资源并且进行离线存储。如果已经访问过 app 并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的 manifest 文件与旧的 manifest 文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。</p>
+<p>离线的情况下，浏览器就直接使用离线存储的资源。</p>
+<h2 id="attibute和property区别">attibute和property区别</h2>
+<p>attribute 是 dom 元素在文档中作为 html 标签拥有的属性；<br>
+property 就是 dom 元素在 js 中作为对象拥有的属性。</p>
+<p>对于 html 的标准属性来说，attribute 和 property 是同步的，是会自动更新的，但是对于自定义的属性来说，他们是不同步的。</p>
+<h1>CSS</h1>
+<h2 id></h2>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Front-end/">Front-end</a><a class="post-meta__tags" href="/tags/Interview-Questions/">Interview Questions</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/05/16/code01/"><i class="fa fa-chevron-left">  </i><span>Leetcode EveryDay 91 💪</span></a></div><div class="next-post pull-right"><a href="/2020/04/26/frontend-interview-note/"><span>Front-end Interview Note 4 💪</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'osOa9nOdMvJ7waVycMHyXcpL-gzGzoHsz',
+  appKey:'k2MfP5O1nYredg5XqqbEH6DC',
+  placeholder:'Add your first comment here!',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'en'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By HongLeee</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-glasses"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

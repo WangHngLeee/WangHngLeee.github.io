@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="📖 前端问题杂烩-Vue篇(1)"><meta name="keywords" content="Front-end,Interview Questions,Vue"><meta name="author" content="HongLeee"><meta name="copyright" content="HongLeee"><title>📖 前端问题杂烩-Vue篇(1) | Leee's World</title><link rel="shortcut icon" href="/a1.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-7147375581336623',
+  enable_page_level_ads: 'true'
+});
+</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166070746-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#讲一讲MVVM？（⭐️⭐️⭐️⭐️）"><span class="toc-number">1.</span> <span class="toc-text">讲一讲MVVM？（⭐️⭐️⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#讲一下Vue2-x响应式数据的原理（⭐️⭐️⭐️）"><span class="toc-number">2.</span> <span class="toc-text">讲一下Vue2.x响应式数据的原理（⭐️⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#讲一下Vue3-x响应式数据原理（⭐️⭐️⭐️⭐️）"><span class="toc-number">3.</span> <span class="toc-text">讲一下Vue3.x响应式数据原理（⭐️⭐️⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢？（⭐️⭐️⭐️）"><span class="toc-number">4.</span> <span class="toc-text">Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢？（⭐️⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监测数组的时候可能触发多次get-set，如何防止触发多次呢？（⭐️⭐️⭐️）"><span class="toc-number">5.</span> <span class="toc-text">监测数组的时候可能触发多次get/set，如何防止触发多次呢？（⭐️⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue2-x中如何监测数组变化（⭐️⭐️）"><span class="toc-number">6.</span> <span class="toc-text">vue2.x中如何监测数组变化（⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nextTick是什么？它的实现原理？（⭐️⭐️）"><span class="toc-number">7.</span> <span class="toc-text">nextTick是什么？它的实现原理？（⭐️⭐️）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue的生命周期（⭐️⭐️⭐️⭐️⭐️）"><span class="toc-number">8.</span> <span class="toc-text">Vue的生命周期（⭐️⭐️⭐️⭐️⭐️）</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/05/11/YYYDdf.jpg"></div><div class="author-info__name text-center">HongLeee</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/WangHngLeee">+ Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">121</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">48</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">22</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Leee's World</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About Me</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">📖 前端问题杂烩-Vue篇(1)</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 04-08-2020</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/前端框架/">前端框架</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/前端框架/Vue/">Vue</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/前端框架/Vue/Interview/">Interview</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="讲一讲MVVM？（⭐️⭐️⭐️⭐️）">讲一讲MVVM？（⭐️⭐️⭐️⭐️）</h3>
+<p>MVVM是Model-View-ViewModel的缩写，也就是把后端概念里MVC的controller换成了viewmodel。<br></p>
+<p>Model层代表数据模型，View代表UI组件，ViewModel是View和Model层的桥梁，数据会绑定到viewModel层并自动将数据渲染到页面中，视图变化的时候会通知viewModel层更新数据。</p>
+<h3 id="讲一下Vue2-x响应式数据的原理（⭐️⭐️⭐️）">讲一下Vue2.x响应式数据的原理（⭐️⭐️⭐️）</h3>
+<p>Vue在初始化数据时，会使用Object.defineProperty重新定义data中的所有属性。当页面使用对应属性时，首先会进行依赖收集(收集当前组件的watcher)，如果属性发生变化会通知相关依赖进行更新操作(发布订阅)。</p>
+<a id="more"></a>
+<h3 id="讲一下Vue3-x响应式数据原理（⭐️⭐️⭐️⭐️）">讲一下Vue3.x响应式数据原理（⭐️⭐️⭐️⭐️）</h3>
+<p>Vue3.x改用Proxy替代Object.defineProperty。因为Proxy可以直接监听对象和数组的变化，并且有多达13种拦截方法。并且作为新标准将受到浏览器厂商重点持续的性能优化。</p>
+<h3 id="Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢？（⭐️⭐️⭐️）">Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢？（⭐️⭐️⭐️）</h3>
+<p>判断当前Reflect.get的返回值是否为Object。如果是则再通过reactive方法做代理，这样就实现了深度观测。</p>
+<h3 id="监测数组的时候可能触发多次get-set，如何防止触发多次呢？（⭐️⭐️⭐️）">监测数组的时候可能触发多次get/set，如何防止触发多次呢？（⭐️⭐️⭐️）</h3>
+<p>可以通过判断key是否为当前被代理对象target自身属性，也可以判断旧值与新值是否相等，只有满足以上两个条件之一时，才有可能执行trigger。</p>
+<h3 id="vue2-x中如何监测数组变化（⭐️⭐️）">vue2.x中如何监测数组变化（⭐️⭐️）</h3>
+<p>使用了函数劫持的方式，重写了数组的方法，Vue将data中的数组进行了原型链重写，指向了自己定义的数组原型方法。这样当调用数组api时，可以通知依赖更新。如果数组中包含着引用类型，会对数组中的引用类型再次递归遍历进行监控。这样就实现了监测数组变化。<br><br>
+（这里要多看vue源码和js原型链的概念。)</p>
+<h3 id="nextTick是什么？它的实现原理？（⭐️⭐️）">nextTick是什么？它的实现原理？（⭐️⭐️）</h3>
+<p>在下次 DOM 更新循环结束之后执行延迟回调。nextTick主要使用了宏任务和微任务。根据执行环境分别尝试采用</p>
+<ul>
+<li>Promise</li>
+<li>MutationObserver</li>
+<li>setImmediate</li>
+</ul>
+<p>如果以上都不行则采用setTimeout<br>
+定义了一个异步方法，多次调用nextTick会将方法存入队列中，通过这个异步方法清空当前队列。</p>
+<p>(其实问框架最终还是考验原生JavaScript的功底)</p>
+<h3 id="Vue的生命周期（⭐️⭐️⭐️⭐️⭐️）">Vue的生命周期（⭐️⭐️⭐️⭐️⭐️）</h3>
+<p>Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模版、挂载DOM、渲染➡️更新➡️渲染、销毁等一系列过程，这就是Vue生命周期的定义。通俗讲就是Vue实例从创建到销毁到全过程。</p>
+<p><strong>beforeCreate</strong>：是new Vue()之后触发的第一个钩子，在当前阶段data、methods、computed以及watch上的数据和方法都不能被访问。</p>
+<p><strong>created</strong>：在实例创建完成后发生，当前阶段已经完成了数据观测，也就是可以使用数据，更改数据，在这里更改数据不会触发updated函数。可以做一些初始数据的获取，在当前阶段无法与Dom进行交互，如果非要想，可以通过vm.$nextTick来访问Dom。</p>
+<p><strong>beforeMount</strong>：  发生在挂载之前，在这之前template模板已导入渲染函数编译。而当前阶段虚拟Dom已经创建完成，即将开始渲染。在此时也可以对数据进行更改，不会触发updated。</p>
+<p><strong>mounted</strong>： 在挂载完成后发生，在当前阶段，真实的Dom挂载完毕，数据完成双向绑定，可以访问到Dom节点，使用$refs属性对Dom进行操作。</p>
+<p><strong>beforeUpdate</strong>： 发生在更新之前，也就是响应式数据发生更新，虚拟dom重新渲染之前被触发，你可以在当前阶段进行更改数据，不会造成重渲染。</p>
+<p><strong>updated</strong>： 发生在更新完成之后，当前阶段组件Dom已完成更新。要注意的是避免在此期间更改数据，因为这可能会导致无限循环的更新。</p>
+<p><strong>beforeDestroy</strong>： 发生在实例销毁之前，在当前阶段实例完全可以被使用，我们可以在这时进行善后收尾工作，比如清除计时器。</p>
+<p><strong>destroyed</strong>： 发生在实例销毁之后，这个时候只剩下了dom空壳。组件已被拆解，数据绑定被卸除，监听被移出，子实例也统统被销毁。</p>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Front-end/">Front-end</a><a class="post-meta__tags" href="/tags/Interview-Questions/">Interview Questions</a><a class="post-meta__tags" href="/tags/Vue/">Vue</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/04/13/vue3/"><i class="fa fa-chevron-left">  </i><span>📖 Vue学习笔记(3)</span></a></div><div class="next-post pull-right"><a href="/2020/04/05/vue2/"><span>📖 Vue学习笔记(2)</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'osOa9nOdMvJ7waVycMHyXcpL-gzGzoHsz',
+  appKey:'k2MfP5O1nYredg5XqqbEH6DC',
+  placeholder:'Add your first comment here!',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'en'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By HongLeee</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-glasses"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

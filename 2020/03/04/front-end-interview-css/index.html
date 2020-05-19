@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Front-end Interview Note 2 💪"><meta name="keywords" content="Front-end,Interview Questions"><meta name="author" content="HongLeee"><meta name="copyright" content="HongLeee"><title>Front-end Interview Note 2 💪 | Leee's World</title><link rel="shortcut icon" href="/a1.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-7147375581336623',
+  enable_page_level_ads: 'true'
+});
+</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166070746-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">CSS 篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#盒模型"><span class="toc-number">1.0.1.</span> <span class="toc-text">盒模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-number">1.0.2.</span> <span class="toc-text">flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css选择器"><span class="toc-number">1.0.3.</span> <span class="toc-text">css选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC"><span class="toc-number">1.0.4.</span> <span class="toc-text">BFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清除浮动："><span class="toc-number">1.0.5.</span> <span class="toc-text">清除浮动：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#层叠上下文"><span class="toc-number">1.0.6.</span> <span class="toc-text">层叠上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-中哪些属性可以继承？"><span class="toc-number">1.0.7.</span> <span class="toc-text">CSS 中哪些属性可以继承？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垂直居中问题："><span class="toc-number">1.0.8.</span> <span class="toc-text">垂直居中问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-position种类-属性？"><span class="toc-number">1.0.9.</span> <span class="toc-text">CSS position种类&amp;属性？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见页面布局"><span class="toc-number">1.0.10.</span> <span class="toc-text">常见页面布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应式布局"><span class="toc-number">1.0.11.</span> <span class="toc-text">响应式布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css预处理，后处理"><span class="toc-number">1.0.12.</span> <span class="toc-text">css预处理，后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css3新特性"><span class="toc-number">1.0.13.</span> <span class="toc-text">css3新特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#display哪些取值"><span class="toc-number">1.0.14.</span> <span class="toc-text">display哪些取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相邻的两个inline-block节点为什么会出现间隔，该如何解决"><span class="toc-number">1.0.15.</span> <span class="toc-text">相邻的两个inline-block节点为什么会出现间隔，该如何解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#meta-viewport-移动端适配"><span class="toc-number">1.0.16.</span> <span class="toc-text">meta viewport 移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rem布局的优缺点"><span class="toc-number">1.0.17.</span> <span class="toc-text">rem布局的优缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#link标签和import标签的区别："><span class="toc-number">1.0.18.</span> <span class="toc-text">link标签和import标签的区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1像素边框问题："><span class="toc-number">1.0.19.</span> <span class="toc-text">1像素边框问题：</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/05/11/YYYDdf.jpg"></div><div class="author-info__name text-center">HongLeee</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/WangHngLeee">+ Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">121</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">48</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">22</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Leee's World</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About Me</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Front-end Interview Note 2 💪</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 03-04-2020</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/">Interview</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/CSS/">CSS</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1>CSS 篇</h1>
+<h3 id="盒模型">盒模型</h3>
+<p>CSS中的盒子模型包括IE盒子模型和标准的W3C盒子模型。<br>
+box-sizing(有3个值哦)：border-box,padding-box,content-box.<br>
+标准的盒子模型：width指content部分的宽度<br>
+在IE盒子模型中：width表示content+padding+border<br>
+标准盒子模型的盒子宽度：左右border+左右padding+width<br>
+IE盒子模型的盒子宽度：width</p>
+<h3 id="flex">flex</h3>
+<p>Flex是Flexible Box的缩写，意为&quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。<br>
+布局的传统解决方案，基于盒状模型，依赖display属性 + position属性 + float属性。<br>
+容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
+<h3 id="css选择器">css选择器</h3>
+<p>id 选择器，class 选择器，标签选择器，伪元素选择器，伪类选择器等<br>
+同一元素引用了多个样式时，排在后面的样式属性的优先级高；<br>
+样式选择器的类型不同时，优先级顺序为：id 选择器 &gt; class 选择器 &gt; 标签选择器；<br>
+标签之间存在层级包含关系时，后代元素会继承祖先元素的样式。如果后代元素定义了与祖先元素相同的样式，则祖先元素的相同的样式属性会被覆盖。继承的样式的优先级比较低，至少比标签选择器的优先级低；<br>
+带有!important 标记的样式属性的优先级最高；<br>
+样式表的来源不同时，优先级顺序为：内联样式&gt; 内部样式 &gt; 外部样式 &gt; 浏览器用户自定义样式 &gt; 浏览器默认样式</p>
+<a id="more"></a>
+<h3 id="BFC">BFC</h3>
+<p>BFC，块级格式化上下文，用于清楚浮动，防止margin重叠等。这是一个独立的渲染区域，规定了内部如何布局，并且这个区域的子元素不会影响到外面的元素，其中比较重要的布局规则有内部box垂直放置，计算BFC的高度的时候，浮动元素也参与计算，触发BFC的规则有根元素，浮动元素，position为absolute或fixed的元素，display为inline-block，table-cell，table-caption，flex，inline-flex，overflow不为visible的元素</p>
+<h3 id="清除浮动：">清除浮动：</h3>
+<p>bfc清除浮动<br>
+给要清除浮动的元素添加样式clear （ clear的原理是使浮动元素不影响别的元素，而不是消灭浮动）<br>
+父元素结束标签钱插入清除浮动的块级元素，给该元素添加样式clear<br>
+添加伪元素，在父级元素的最后，添加一个伪元素，通过清除伪元素的浮动，注意该伪元素的display为block，<br>
+父元素添加样式overflow清除浮动，overflow设置除visible以外的任何位置</p>
+<h3 id="层叠上下文">层叠上下文</h3>
+<p>层叠上下文，stacking context， 是HTML中的一个三维的概念。z-index<br>
+顺序根据z-index从大到小显示，首先看父类容器的z-index。div的z-index决定了子元素的显示顺序。</p>
+<h3 id="CSS-中哪些属性可以继承？">CSS 中哪些属性可以继承？</h3>
+<p>每一个属性在定义中都给出了这个属性是否具有继承性，一个具有继承性的属性会在没有指定值的时候，会使用父元素的同属性的值<br>
+来作为自己的值。<br>
+一般具有继承性的属性有，字体相关的属性，font-size 和 font-weight 等。文本相关的属性，color 和 text-align 等。<br>
+表格的一些布局属性、列表属性如 list-style 等。 还有光标属性 cursor、元素可见性 visibility 。<br>
+当一个属性不是继承属性的时候，我们也可以通过将它的值设置为 inherit 来使它从父元素那获取同名的属性值来继承。</p>
+<h3 id="垂直居中问题：">垂直居中问题：</h3>
+<p>对于宽高固定的元素<br>
+（1）我们可以利用 margin:0 auto 来实现元素的水平居中。<br>
+（2）利用绝对定位，设置四个方向的值都为0，并将 margin 设置为 auto ，由于宽高固定，因此对应方向实现平分，可以实现水<br>
+平和垂直方向上的居中。<br>
+（3）利用绝对定位，先将元素的左上角通过 top: 50% 和 left: 50% 定位到页面的中心，然后再通过 margin 负值来调整元素<br>
+的中心点到页面的中心。<br>
+（4）利用绝对定位，先将元素的左上角通过 top: 50% 和 left: 50% 定位到页面的中心，然后再通过 translate 来调整元素<br>
+的中心点到页面的中心。<br>
+（5）使用 flex 布局，通过 align-items: center 和 justify-content: center 设置容器的垂直和水平方向上为居中对<br>
+齐，然后它的子元素也可以实现垂直和水平的居中。<br>
+对于宽高不定的元素，上面的后面两种方法，可以实现元素的垂直和水平的居中。</p>
+<h3 id="CSS-position种类-属性？">CSS position种类&amp;属性？</h3>
+<p>固定定位fixed：元素的位置相对于浏览器窗口是固定位置，即使窗口是滚动的它也不会移动。Fixed定位使元素的位置与文档流无关，因此不占据空间。 Fixed定位的元素和其他元素重叠。<br>
+相对定位relative：如果对一个元素进行相对定位，它将出现在它所在的位置上。然后，可以通过设置垂直或水平位置，让这个元素“相对于”它的起点进行移动。 在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其它框。<br>
+绝对定位absolute：绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html>。 absolute 定位使元素的位置与文档流无关，因此不占据空间。 absolute 定位的元素和其他元素重叠。<br>
+粘性定位sticky：元素先按照普通文档流定位，然后相对于该元素在流中的flow root（BFC）和 containing block（最近的块级祖先元素）定位。而后，元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位。<br>
+默认定位Static：默认值。没有定位，元素出现在正常的流中（忽略top, bottom, left, right 或者 z-index 声明）。<br>
+inherit:规定应该从父元素继承position 属性的值。</html></p>
+<h3 id="常见页面布局">常见页面布局</h3>
+<p>传统盒模型布局：文档流布局，浮动布局，定位布局<br>
+弹性盒子flex布局：<br>
+Grid网格布局<br>
+圣杯（多列）布局<br>
+双飞翼布局</p>
+<h3 id="响应式布局">响应式布局</h3>
+<p>1.媒体查询：CSS3媒体查询可以让我们针对不同的媒体类型定义不同的样式，当重置浏览器窗口大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。<br>
+2.百分比布局：通过百分比单位，可以使得浏览器中组件的宽和高随着浏览器的高度的变化而变化，从而实现响应式的效果<br>
+3.rem布局：rem单位都是相对于根元素html的font-size来决定大小的。通过rem来实现响应式的布局，只需要根据视图容器的大小，动态的改变font-size即可<br>
+4.视口单位<br>
+5.图片响应式： 大小自适应 ｜｜ 根据分辨率尽可能选择分辨率高的图片。</p>
+<h3 id="css预处理，后处理">css预处理，后处理</h3>
+<p>预处理：广义上说，目标格式为 CSS 的 预处理器 是 CSS 预处理器，但本文 特指 以最终生成 CSS 为目的的 领域特定语言。Sass、LESS、Stylus 是目前最主流的 CSS 预处理器。<br>
+实现原理：取到 DSL 源代码 的 分析树，将含有 动态生成 相关节点的 分析树 转换为 静态分析树，将 静态分析树 转换为 CSS 的 静态分析树，将 CSS 的 静态分析树 转换为 CSS 代码<br>
+后处理：对 CSS 进行处理，并最终生成 CSS 的 预处理器，它属于广义上的 CSS 预处理器。<br>
+CSS 压缩工具（如 clean-css）<br>
+实现原理：将 源代码 做为 CSS 解析，获得分析树，对CSS的分析树进行后处理，</p>
+<h3 id="css3新特性">css3新特性</h3>
+<p>Transition:可以在当元素从一种样式变换为另一种样式时为元素添加效果，而不用使用Flash动画或JavaScript<br>
+Transform：Transform用来向元素应用各种2D和3D转换，该属性允许我们对元素进行旋转、缩放、移动或倾斜等<br>
+Animation：Animation让CSS拥有了可以制作动画的功能。使用Animation制作动画可以省去复杂的js代码</p>
+<h3 id="display哪些取值">display哪些取值</h3>
+<p>none：隐藏，不会占用文档流位置（其他元素会占用他的位置）<br>
+inline：行内元素<br>
+inline-block：行内块元素，也即有块元素的一些特性，可以设置宽高度边距等等。<br>
+block：块元素，独占一行，可以设置宽高边距等等。<br>
+table：相关，众所周知table域有一些特定的标签：table、tr、th、td、tfoot等等。那么可以用div等元素的来实现吗？可以，将这些元素的display设置成table-*就行。<br>
+inherit：即继承。</p>
+<h3 id="相邻的两个inline-block节点为什么会出现间隔，该如何解决">相邻的两个inline-block节点为什么会出现间隔，该如何解决</h3>
+<p>两个In line block 节点之间有空隙原因：英文有空格作为词分界，而中文则没有。（这背后延伸出一个中文分词的问题）这个问题的原因可以上述到SGML(标准通用标记语言)和TeX(排版工具)，它实际上是一个行内（inline）的问题，它由空格、换行或回车所产生空白符所致<br>
+方法1. 改变书写方式 去掉html中的空格，或者排列在一行，但是可读性差<br>
+方法2：font-size<br>
+方法3：使用margin负值<br>
+方法4：使用word-spacing或letter-spacing</p>
+<h3 id="meta-viewport-移动端适配">meta viewport 移动端适配</h3>
+<p>所做的适配，就是要调整layout viewport的大小，而用meta标签就可以调整layout viewport的大小。</p>
+<h3 id="rem布局的优缺点">rem布局的优缺点</h3>
+<p>rem可以让我们的页面更灵活，更健壮，比起到处写死的px值，em似乎更有张力，改动父元素的字体大小，子元素会等比例变化，这一变化似乎预示了无限可能<br>
+rem是弹性布局的一种，弹性布局是响应式布局的一种，但是响应式布局不是弹性布局。弹性布局强调等比缩放，强调百分百还原，响应式布局强调不同设备有不同的展现。<br>
+Rem过于死板，响应式布局可以多设备自适应，</p>
+<h3 id="link标签和import标签的区别：">link标签和import标签的区别：</h3>
+<p>link属于html标签，而@import是css提供的<br>
+页面被加载时，link会同时被加载，而@import引用的css会等到页面加载结束后加载。<br>
+link是html标签，因此没有兼容性，而@import只有IE5以上才能识别。<br>
+link方式样式的权重高于@import的。</p>
+<h3 id="1像素边框问题：">1像素边框问题：</h3>
+<p>1）border-image 图片 实现<br>
+缺点是制作图片的圆角时候会出现模糊。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.border-image<span class="number">-1</span>px &#123;</span><br><span class="line">    border-width: <span class="number">1</span>px <span class="number">0</span>px;</span><br><span class="line">    -webkit-border-image: url(<span class="string">"image_url"</span>) <span class="number">2</span> <span class="number">0</span> stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>background-image 渐变实现<br>
+除啦用图片，难道纯粹的css就不能实现吗？我的确不想使用图片，感觉制作起来很麻烦，其实百度糯米团首页就是这么做的但是这种方法有个缺点，就是不能实现圆角</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.border &#123;</span><br><span class="line">      background-image:linear-gradient(<span class="number">180</span>deg, red, red <span class="number">50</span>%, transparent <span class="number">50</span>%),</span><br><span class="line">      linear-gradient(<span class="number">270</span>deg, red, red <span class="number">50</span>%, transparent <span class="number">50</span>%),</span><br><span class="line">      linear-gradient(<span class="number">0</span>deg, red, red <span class="number">50</span>%, transparent <span class="number">50</span>%),</span><br><span class="line">      linear-gradient(<span class="number">90</span>deg, red, red <span class="number">50</span>%, transparent <span class="number">50</span>%);</span><br><span class="line">      background-size: <span class="number">100</span>% <span class="number">1</span>px,<span class="number">1</span>px <span class="number">100</span>% ,<span class="number">100</span>% <span class="number">1</span>px, <span class="number">1</span>px <span class="number">100</span>%;</span><br><span class="line">      background-repeat: no-repeat;</span><br><span class="line">      background-position: top, right top,  bottom, left top;</span><br><span class="line">      padding: <span class="number">10</span>px;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>viewport+rem实现<br>
+box-shadow 实现<br>
+利用阴影我们也可以实现，那么我们来看看阴影，优点是圆角不是问题，缺点是颜色不好控制。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    -webkit-box-shadow:<span class="number">0</span> <span class="number">1</span>px <span class="number">1</span>px <span class="number">-1</span>px rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>transform: scale(0.5) 实现 推荐相当灵活<br>
+其实我们刚才列举了那么多例子，无非就是把1px缩放都0.5px的状态下，而0.5px并不是所有都支持，再根据媒体查询设置不同的缩放比例就可以了，那么我们就开始玩儿缩放吧。<br>
+1.用height：1px的div，然后根据媒体查询设置transform: scaleY(0.5);，</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    height:<span class="number">1</span>px;</span><br><span class="line">    background:#000;</span><br><span class="line">    -webkit-transform: scaleY(<span class="number">0.5</span>);</span><br><span class="line">    -webkit-transform-origin:<span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.用::after和::befor,设置border-bottom：1px solid #000,然后在缩放-webkit-transform: scaleY(0.5);可以实现两根边线的需求</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">div::after&#123;</span><br><span class="line">    content:<span class="string">''</span>;width:<span class="number">100</span>%;</span><br><span class="line">    border-bottom:1px solid #000;</span><br><span class="line">    transform: scaleY(<span class="number">0.5</span>);&#125;</span><br></pre></td></tr></table></figure>
+<p>3.用::after设置border：1px solid #000; width:200%; height:200%,然后再缩放scaleY(0.5); 优点可以实现圆角，京东就是这么实现的，缺点是按钮添加active比较麻烦。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.div::after &#123;</span><br><span class="line">    content: <span class="string">''</span>;</span><br><span class="line">    width: <span class="number">200</span>%;</span><br><span class="line">    height: <span class="number">200</span>%;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: <span class="number">0</span>;</span><br><span class="line">    left: <span class="number">0</span>;</span><br><span class="line">    border: 1px solid #bfbfbf;</span><br><span class="line">    border-radius: <span class="number">4</span>px;</span><br><span class="line">    -webkit-transform: scale(<span class="number">0.5</span>,<span class="number">0.5</span>);</span><br><span class="line">    transform: scale(<span class="number">0.5</span>,<span class="number">0.5</span>);</span><br><span class="line">    -webkit-transform-origin: top left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Front-end/">Front-end</a><a class="post-meta__tags" href="/tags/Interview-Questions/">Interview Questions</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/03/05/frontend-interview-js/"><i class="fa fa-chevron-left">  </i><span>Front-end Interview Note 3 💪</span></a></div><div class="next-post pull-right"><a href="/2020/03/04/frontent-interview-html/"><span>Front-end Interview Note 1 💪</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'osOa9nOdMvJ7waVycMHyXcpL-gzGzoHsz',
+  appKey:'k2MfP5O1nYredg5XqqbEH6DC',
+  placeholder:'Add your first comment here!',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'en'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By HongLeee</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-glasses"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Ruby learning notes(1)"><meta name="keywords" content="ruby,OOP"><meta name="author" content="HongLeee"><meta name="copyright" content="HongLeee"><title>Ruby learning notes(1) | Leee's World</title><link rel="shortcut icon" href="/a1.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-7147375581336623',
+  enable_page_level_ads: 'true'
+});
+</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166070746-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby-语法"><span class="toc-number">1.1.</span> <span class="toc-text">Ruby 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby中的行尾"><span class="toc-number">1.2.</span> <span class="toc-text">Ruby中的行尾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby中的Here-Document"><span class="toc-number">1.3.</span> <span class="toc-text">Ruby中的Here Document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby-中的BEGIN-END-语句"><span class="toc-number">1.4.</span> <span class="toc-text">Ruby 中的BEGIN/END 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby-中的数组"><span class="toc-number">1.5.</span> <span class="toc-text">Ruby 中的数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby的哈希类型"><span class="toc-number">1.6.</span> <span class="toc-text">Ruby的哈希类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby-范围类型"><span class="toc-number">1.7.</span> <span class="toc-text">Ruby 范围类型</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/05/11/YYYDdf.jpg"></div><div class="author-info__name text-center">HongLeee</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/WangHngLeee">+ Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">121</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">48</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">22</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Leee's World</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About Me</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Ruby learning notes(1)</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 08-27-2019</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/ruby/">ruby</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="前言">前言</h2>
+<p>由于选了CSC517的oop需要用ruby来做project，虽然ruby较为冷门，但是多学一门语言总是好的。<br><br>
+环境设置以及一些基本操作就跳过了。</p>
+<h3 id="Ruby-语法">Ruby 语法</h3>
+<p>ruby中输出用puts</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">puts <span class="string">"Hello Ruby!"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Ruby中的行尾">Ruby中的行尾</h3>
+<p>ruby中用分号；或者换行符\n来表示行尾。</p>
+<h3 id="Ruby中的Here-Document">Ruby中的Here Document</h3>
+<p>Here Document&quot; 是指建立多行字符串。<br><br>
+在 &lt;&lt; 之后，k可以指定一个字符串或标识符来终止字符串，且当前行之后直到终止符为止的所有行是字符串的值。<br><br>
+如果终止符用引号括起，引号的类型决定了面向行的字符串类型。注意&lt;&lt; 和终止符之间必须没有空格.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/ruby -w</span></span><br><span class="line"><span class="comment"># -*- coding : utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line">print &lt;&lt;EOF</span><br><span class="line">    这是第一种方式创建here document 。</span><br><span class="line">    多行字符串。</span><br><span class="line">EOF</span><br><span class="line"> </span><br><span class="line">print &lt;&lt;<span class="string">"EOF"</span>;                <span class="comment"># 与上面相同</span></span><br><span class="line">    这是第二种方式创建here document 。</span><br><span class="line">    多行字符串。</span><br><span class="line">EOF</span><br><span class="line"> </span><br><span class="line">print &lt;&lt;<span class="string">`EOC`</span>                 <span class="comment"># 执行命令</span></span><br><span class="line">    echo hi there</span><br><span class="line">    echo lo there</span><br><span class="line">EOC</span><br><span class="line"> </span><br><span class="line">print &lt;&lt;<span class="string">"foo"</span>, &lt;&lt;<span class="string">"bar"</span>          <span class="comment"># 您可以把它们进行堆叠</span></span><br><span class="line">    I said foo.</span><br><span class="line">foo</span><br><span class="line">    I said bar.</span><br><span class="line">bar</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Ruby-中的BEGIN-END-语句">Ruby 中的BEGIN/END 语句</h3>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span>&#123;</span><br><span class="line">    cdoe</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>表示code会在程序运行之前调用<br><br>
+例子：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">puts <span class="string">"this is main code"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span>&#123;</span><br><span class="line">    puts <span class="string">"this is begin code"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">this is <span class="keyword">begin</span> code</span><br><span class="line">this is main code</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">END</span>&#123;</span><br><span class="line">    CODE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>表明code会在程序运行之后调用<br>
+例子：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">END</span>&#123;</span><br><span class="line">    puts <span class="string">"this is END code"</span></span><br><span class="line">&#125;</span><br><span class="line">puts <span class="string">"this is main code"</span></span><br><span class="line"><span class="keyword">BEGIN</span>&#123;</span><br><span class="line">    puts <span class="string">"this is begin code"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">this is <span class="keyword">begin</span> code</span><br><span class="line">this is main code </span><br><span class="line">this is <span class="keyword">end</span> code</span><br></pre></td></tr></table></figure>
+<h3 id="Ruby-中的数组">Ruby 中的数组</h3>
+<p>数组字面量通过[]中以逗号分隔定义，且支持range定义。<br></p>
+<p>（1）数组通过[]索引访问<br><br>
+（2）通过赋值操作插入、删除、替换元素<br><br>
+（3）通过+，－号进行合并和删除元素，且集合做为新集合出现<br><br>
+（4）通过&lt;&lt;号向原数据追加元素<br><br>
+（5）通过*号重复数组元素<br><br>
+（6）通过｜和&amp;符号做并集和交集操作（注意顺序）<br><br>
+下面例子完成了数组的顺序输出：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">"a"</span>,<span class="string">"bbb"</span>,<span class="string">"123"</span>,<span class="string">"null"</span>,]</span><br><span class="line">arr.each <span class="keyword">do</span> <span class="params">|i|</span></span><br><span class="line">    puts i</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="Ruby的哈希类型">Ruby的哈希类型</h3>
+<p>Ruby 哈希是在大括号内放置一系列键/值对，键和值之间使用逗号和序列 =&gt; 分隔。尾部的逗号会被忽略。</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">hsh = colors = &#123;<span class="string">"red"</span> =&gt; <span class="number">0xf00</span>, <span class="string">"green"</span> =&gt; <span class="number">0x0f0</span>, <span class="string">"blue"</span> =&gt; <span class="number">0x00f</span>&#125;</span><br><span class="line">hsh.each <span class="keyword">do</span> <span class="params">|key,value|</span></span><br><span class="line">    pring key,<span class="string">"is"</span>,value,<span class="string">"\n"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="Ruby-范围类型">Ruby 范围类型</h3>
+<p>一个范围表示一个区间。<br><br>
+范围是通过设置一个开始值和一个结束值来表示。范围可使用 s…e 和 s…e 来构造，或者通过 Range.new 来构造。<br>
+使用 … 构造的范围从开始值运行到结束值（包含结束值）。使用 … 构造的范围从开始值运行到结束值（不包含结束值）。当作为一个迭代器使用时，范围会返回序列中的每个值。<br><br>
+范围 (1…5) 意味着它包含值 1, 2, 3, 4, 5<br><br>
+范围 (1…5) 意味着它包含值 1, 2, 3, 4</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">(<span class="number">10</span>..<span class="number">15</span>).each <span class="keyword">do</span><span class="params">|i|</span></span><br><span class="line">    print i,<span class="string">' '</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="number">10</span> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span> <span class="number">14</span> <span class="number">15</span></span><br></pre></td></tr></table></figure>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ruby/">ruby</a><a class="post-meta__tags" href="/tags/OOP/">OOP</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/09/12/leetcode31/"><i class="fa fa-chevron-left">  </i><span>Leetcode EveryDay 31</span></a></div><div class="next-post pull-right"><a href="/2019/08/22/leetcode30/"><span>Leetcode EveryDay 30</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'osOa9nOdMvJ7waVycMHyXcpL-gzGzoHsz',
+  appKey:'k2MfP5O1nYredg5XqqbEH6DC',
+  placeholder:'Add your first comment here!',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'en'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://s2.ax1x.com/2019/10/08/uWbqMj.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By HongLeee</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-glasses"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
