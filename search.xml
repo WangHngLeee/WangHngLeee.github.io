@@ -5063,7 +5063,7 @@ Any dead cell with exactly three live neighbors becomes a live cell, as if by re
       </tags>
   </entry>
   <entry>
-    <title>Leetcode EveryDay 93 / Tree(1) 💪</title>
+    <title>Leetcode EveryDay 97 / Tree(1) 💪</title>
     <url>/2020/06/07/tree01/</url>
     <content><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-199-Binary-Tree-Right-Side-View-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">199. Binary Tree Right Side View</font></td></tr></table></h2>
 <p><a target="_blank" href="https://leetcode.com/problems/next-permutation/"><font size="4">🔗 Question Link </font></a></p>
