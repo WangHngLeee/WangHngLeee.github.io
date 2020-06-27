@@ -5647,4 +5647,222 @@ A concatenated word is defined as a string that is comprised entirely of at leas
         <tag>Interview Questions</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Front-end Interview Note 7 💪</title>
+    <url>/2020/06/26/frontend-interview-07/</url>
+    <content><![CDATA[<h2 id="跨域">跨域</h2>
+<blockquote>
+<p>因为浏览器出于安全考虑，有同源策略。同源策略要求协议，域名，端口全部相同，若有一个不同就是跨域，则<code>Ajax</code> 请求会失败。</p>
+</blockquote>
+<h3 id="JSONP">JSONP</h3>
+<blockquote>
+<p><code>JSONP</code> 是利用 <code>&lt;script&gt;</code> 标签没有跨域限制的漏洞，通过 <code>&lt;script&gt;</code> 标签，当需要通讯时，指向一个需要访问的地址并提供一个回调函数来接收数据</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://domain/api?param1=a&amp;param2=b&amp;callback=jsonp"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">jsonp</span>(<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    	<span class="built_in">console</span>.log(data)</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<ul>
+<li><code>JSONP</code> 使用简单且兼容性不错，但是只限于 <code>get</code> 请求</li>
+</ul>
+<h3 id="CORS">CORS</h3>
+<ul>
+<li><code>CORS</code>需要浏览器和后端同时支持</li>
+<li>浏览器会自动进行 <code>CORS</code> 通信，实现<code>CORS</code>通信的关键是后端。只要后端实现了 <code>CORS</code>，就实现了跨域。</li>
+<li>服务端设置 <code>Access-Control-Allow-Origin</code> 就可以开启 <code>CORS</code>。 该属性表示哪些域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源</li>
+</ul>
+<h3 id="document-domain">document.domain</h3>
+<ul>
+<li>该方式只能用于二级域名相同的情况下，比如 <code>a.test.com</code> 和 <code>b.test.com</code> 适用于该方式。</li>
+<li>只需要给页面添加 <code>document.domain = 'test.com'</code> 表示二级域名都相同就可以实现跨域</li>
+</ul>
+<h3 id="postMessage">postMessage</h3>
+<blockquote>
+<p>这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 发送消息端</span></span><br><span class="line"><span class="built_in">window</span>.parent.postMessage(<span class="string">'message'</span>, <span class="string">'http://blog.poetries.com'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收消息端</span></span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> MessageChannel();</span><br><span class="line">mc.addEventListener(<span class="string">'message'</span>, (event) =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> origin = event.origin || event.originalEvent.origin;</span><br><span class="line">    <span class="keyword">if</span> (origin === <span class="string">'http://blog.poetries.com'</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'验证通过'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Event-loop">Event loop</h2>
+<h3 id="JS中的event-loop">JS中的event loop</h3>
+<blockquote>
+<p><code>JS</code> 是门非阻塞单线程语言，因为在最初 <code>JS</code> 就是为了和浏览器交互而诞生的。如果 <code>JS</code> 是门多线程的语言话，在多个线程中处理 <code>DOM</code> 就可能会发生问题（一个线程中新加节点，另一个线程中删除节点）</p>
+</blockquote>
+<ul>
+<li><code>JS</code> 在执行的过程中会产生执行环境，这些执行环境会被顺序的加入到执行栈中。如果遇到异步的代码，会被挂起并加入到 <code>Task</code>（有多种 <code>task</code>） 队列中。一旦执行栈为空，<code>Event</code> <code>Loop</code> 就会从 <code>Task</code> 队列中拿出需要执行的代码并放入执行栈中执行，所以本质上来说 <code>JS</code> 中的异步还是同步行为</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不同的任务源会被分配到不同的 <code>Task</code> 队列中，任务源可以分为 微任务（<code>microtask</code>） 和 宏任务（<code>macrotask</code>）。在 <code>ES6</code> 规范中，<code>microtask</code> 称为 jobs，macrotask 称为 task</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Promise'</span>)</span><br><span class="line">    resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>);</span><br><span class="line"><span class="comment">// script start =&gt; Promise =&gt; script end =&gt; promise1 =&gt; promise2 =&gt; setTimeout</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以上代码虽然 <code>setTimeout</code> 写在 <code>Promise</code> 之前，但是因为 <code>Promise</code> 属于微任务而 <code>setTimeout</code> 属于宏任务</p>
+</blockquote>
+<h3 id="微任务">微任务</h3>
+<ul>
+<li><code>process.nextTick</code></li>
+<li><code>promise</code></li>
+<li><code>Object.observe</code></li>
+<li><code>MutationObserver</code></li>
+</ul>
+<h3 id="宏任务">宏任务</h3>
+<ul>
+<li><code>script </code></li>
+<li><code>setTimeout</code></li>
+<li><code>setInterval </code></li>
+<li><code>setImmediate </code></li>
+<li><code>I/O </code></li>
+<li><code>UI rendering</code></li>
+</ul>
+<blockquote>
+<p>宏任务中包括了 <code>script</code> ，浏览器会先执行一个宏任务，接下来有异步代码的话就先执行微任务</p>
+</blockquote>
+<h3 id="正确的Event-loop-顺序">正确的Event loop 顺序</h3>
+<ul>
+<li>执行同步代码，这属于宏任务</li>
+<li>执行栈为空，查询是否有微任务需要执行</li>
+<li>执行所有微任务</li>
+<li>必要的话渲染 UI</li>
+<li>然后开始下一轮 <code>Event loop</code>，执行宏任务中的异步代码</li>
+</ul>
+<blockquote>
+<p>如果宏任务中的异步代码有大量的计算并且需要操作 <code>DOM</code> 的话，为了更快的响应界面响应，可以把操作 <code>DOM</code> 放入微任务中</p>
+</blockquote>
+<p><strong>Node 中的 Event loop</strong></p>
+<ul>
+<li><code>Node</code> 中的 <code>Event loop</code> 和浏览器中的不相同。</li>
+<li><code>Node</code> 的 <code>Event loop</code> 分为<code>6</code>个阶段，它们会按照顺序反复运行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">┌───────────────────────┐</span><br><span class="line">┌─&gt;│        timers         │</span><br><span class="line">│  └──────────┬────────────┘</span><br><span class="line">│  ┌──────────┴────────────┐</span><br><span class="line">│  │     I/O callbacks     │</span><br><span class="line">│  └──────────┬────────────┘</span><br><span class="line">│  ┌──────────┴────────────┐</span><br><span class="line">│  │     idle, prepare     │</span><br><span class="line">│  └──────────┬────────────┘      ┌───────────────┐</span><br><span class="line">│  ┌──────────┴────────────┐      │   incoming:   │</span><br><span class="line">│  │         poll          │&lt;──connections───     │</span><br><span class="line">│  └──────────┬────────────┘      │   data, etc.  │</span><br><span class="line">│  ┌──────────┴────────────┐      └───────────────┘</span><br><span class="line">│  │        check          │</span><br><span class="line">│  └──────────┬────────────┘</span><br><span class="line">│  ┌──────────┴────────────┐</span><br><span class="line">└──┤    close callbacks    │</span><br><span class="line">   └───────────────────────┘</span><br></pre></td></tr></table></figure>
+<p><strong>timer</strong></p>
+<ul>
+<li><code>timers</code> 阶段会执行 <code>setTimeout</code> 和 <code>setInterval</code></li>
+<li>一个 timer 指定的时间并不是准确时间，而是在达到这个时间后尽快执行回调，可能会因为系统正在执行别的事务而延迟</li>
+</ul>
+<p><strong>I/O</strong></p>
+<ul>
+<li><code>I/O</code> 阶段会执行除了 <code>close</code> 事件，定时器和 <code>setImmediate</code> 的回调</li>
+</ul>
+<p><strong>poll</strong></p>
+<ul>
+<li>
+<p><code>poll</code> 阶段很重要，这一阶段中，系统会做两件事情</p>
+<ul>
+<li>执行到点的定时器</li>
+<li>执行 <code>poll</code> 队列中的事件</li>
+</ul>
+</li>
+<li>
+<p>并且当 <code>poll</code> 中没有定时器的情况下，会发现以下两件事情</p>
+<ul>
+<li>如果 <code>poll</code> 队列不为空，会遍历回调队列并同步执行，直到队列为空或者系统限制</li>
+<li>如果 <code>poll</code> 队列为空，会有两件事发生</li>
+<li>如果有 <code>setImmediate</code> 需要执行，<code>poll</code> 阶段会停止并且进入到 <code>check</code> 阶段执行 <code>setImmediate</code></li>
+<li>如果没有 <code>setImmediate</code> 需要执行，会等待回调被加入到队列中并立即执行回调</li>
+<li>如果有别的定时器需要被执行，会回到 <code>timer</code> 阶段执行回调。</li>
+</ul>
+</li>
+</ul>
+<p><strong>check</strong></p>
+<ul>
+<li><code>check</code> 阶段执行 <code>setImmediate</code></li>
+</ul>
+<p><strong>close callbacks</strong></p>
+<ul>
+<li><code>close callbacks</code> 阶段执行 <code>close</code> 事件</li>
+<li>并且在 <code>Node</code> 中，有些情况下的定时器执行顺序是随机的</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setImmediate'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 这里可能会输出 setTimeout，setImmediate</span></span><br><span class="line"><span class="comment">// 可能也会相反的输出，这取决于性能</span></span><br><span class="line"><span class="comment">// 因为可能进入 event loop 用了不到 1 毫秒，这时候会执行 setImmediate</span></span><br><span class="line"><span class="comment">// 否则会执行 setTimeout</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面介绍的都是 <code>macrotask</code> 的执行情况，<code>microtask</code> 会在以上每个阶段完成后立即执行</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer1'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上代码在浏览器和 node 中打印情况是不同的</span></span><br><span class="line"><span class="comment">// 浏览器中一定打印 timer1, promise1, timer2, promise2</span></span><br><span class="line"><span class="comment">// node 中可能打印 timer1, timer2, promise1, promise2</span></span><br><span class="line"><span class="comment">// 也可能打印 timer1, promise1, timer2, promise2</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Node</code> 中的 <code>process.nextTick</code> 会先于其他 <code>microtask</code> 执行</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"timer1"</span>);</span><br><span class="line"></span><br><span class="line"> <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"promise1"</span>);</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"nextTick"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// nextTick, timer1, promise1</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Interview</category>
+      </categories>
+      <tags>
+        <tag>Front-end</tag>
+        <tag>Interview Questions</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Front-end Interview Note 8 💪</title>
+    <url>/2020/06/27/frontend-interview-08/</url>
+    <content><![CDATA[<h1>React</h1>
+<h3 id="React-中-keys-的作用">React 中 keys 的作用</h3>
+<blockquote>
+<p><code>Keys</code>是 <code>React</code> 用于追踪哪些列表中元素被修改、被添加或者被移除的 <code>辅助标识</code></p>
+</blockquote>
+<ul>
+<li>在开发中，需要保证某个元素的 <code>key</code> 在其同级元素中具有唯一性。在 <code>React Diff</code> 算法中，<code> React</code> 会借助元素的 <code>Key</code> 值来判断该元素是新近创建的还是被移动而来的元素，从而减少不必要的元素重渲染。此外，React 还需要借助 <code>Key</code> 值来判断元素与本地状态的关联关系。</li>
+</ul>
+<h3 id="传入-setState-函数的第二个参数的作用">传入 setState 函数的第二个参数的作用</h3>
+<blockquote>
+<p>该函数会在<code>setState</code>函数调用完成并且组件开始重渲染的时候被调用，可以用该函数来监听渲染是否完成。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(</span><br><span class="line">  &#123; <span class="attr">username</span>: <span class="string">'tylermcginnis33'</span> &#125;,</span><br><span class="line">  () =&gt; <span class="built_in">console</span>.log(<span class="string">'setState has finished and the component has re-rendered.'</span>)<span class="comment">//渲染完成才会输出log</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    streak: prevState.streak + props.count</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="React-中-refs-的作用">React 中 refs 的作用</h3>
+<ul>
+<li><code>Refs</code> 是 <code>React</code> 提供给的能够安全访问 <code>DOM </code>元素或者某个组件实例的句柄</li>
+<li>可以为元素添加<code>ref</code>属性，然后在回调函数中接受该元素在 <code>DOM</code> 树中的句柄，该值会作为回调函数的第一个参数返回</li>
+</ul>
+<h3 id="在生命周期中的哪一步应该发起-AJAX-请求">在生命周期中的哪一步应该发起 AJAX 请求</h3>
+<blockquote>
+<p>应将AJAX 请求放到 <code>componentDidMount</code> 函数中执行</p>
+</blockquote>
+<ul>
+<li>
+<p><code>React</code> 下一代调和算法 <code>Fiber</code> 会通过开始或停止渲染的方式优化应用性能，会影响到 <code>componentWillMount</code> 的触发次数，会使得<code>componentWillMount</code> 这个生命周期函数的调用次数变得不确定。<code>React</code> 可能会多次频繁调用 <code>componentWillMount</code>。如果将 <code>AJAX</code> 请求放到 <code>componentWillMount</code> 函数中，那么会被触发多次，不采用。</p>
+</li>
+<li>
+<p>如果我们将<code> AJAX</code> 请求放置在生命周期的其他函数中，我们并不能保证请求仅在组件挂载完毕后才会要求响应。如果我们的数据请求在组件挂载之前就完成，并且调用了<code>setState</code>函数将数据添加到组件状态中，对于未挂载的组件则会报错。而在 <code>componentDidMount</code> 函数中进行 <code>AJAX</code> 请求则能有效避免这个问题。</p>
+</li>
+</ul>
+<hr>
+<h3 id="React-中的事件处理逻辑">React 中的事件处理逻辑</h3>
+<blockquote>
+<p>为了解决跨浏览器兼容性问题，<code>React</code> 将浏览器原生事件（<code>Browser Native Event</code>）封装为合成事件（<code>SyntheticEvent</code>）传入设置的事件处理器中。合成事件提供了与原生事件相同的接口，不过它们屏蔽了底层浏览器的细节差异，保证了行为的一致性；另外，<code>React</code> 并没有直接将事件附着到子元素上，而是以单一事件监听器的方式将所有的事件发送到顶层进行处理。这样 <code>React</code> 在更新 <code>DOM</code> 的时候就不需要考虑如何去处理附着在 <code>DOM</code> 上的事件监听器，最终达到优化性能的目的。</p>
+</blockquote>
+<h3 id="redux中间件">redux中间件</h3>
+<blockquote>
+<p>中间件提供第三方插件的模式，自定义拦截 <code>action</code> -&gt; <code>reducer</code> 的过程。变为 <code>action</code> -&gt; <code>middlewares</code> -&gt; <code>reducer </code>。这种机制可以改变数据流，实现如异步<code> action</code> ，<code>action</code> 过滤，日志输出，异常报告等功能。</p>
+</blockquote>
+<ul>
+<li><code>redux-logger</code>：提供日志输出</li>
+<li><code>redux-thunk</code>：处理异步操作</li>
+<li><code>redux-promise</code>：处理异步操作，<code>actionCreator</code>的返回值是<code>promise</code></li>
+</ul>
+<h3 id="为什么虚拟dom会提高性能">为什么虚拟dom会提高性能</h3>
+<blockquote>
+<p>虚拟<code>dom</code>相当于在<code>js</code>和真实<code>dom</code>中间加了一个缓存，利用<code>dom diff</code>算法避免了没有必要的<code>dom</code>操作，从而提高性能</p>
+</blockquote>
+<p><strong>具体实现步骤如下</strong></p>
+<ul>
+<li>用 <code>JavaScript</code> 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 <code>DOM</code> 树，插到文档当中。</li>
+<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异。</li>
+<li>把2所记录的差异应用到步骤1所构建的真正的<code>DOM</code>树上，视图就更新。</li>
+</ul>
+<h3 id="diff算法">diff算法</h3>
+<ul>
+<li>把树形结构按照层级分解，只比较同级元素。</li>
+<li>给列表结构的每个单元添加唯一的<code>key</code>属性，方便比较。</li>
+<li><code>React</code> 只会匹配相同 <code>class</code> 的 <code>component</code>（<code>class</code>指的是组件的名字）</li>
+<li>合并操作，调用 <code>component</code> 的 <code>setState</code> 方法的时候, <code>React</code> 将其标记为 - <code>dirty</code>。到每一个事件循环结束, <code>React</code> 会检查所有标记 ，仅将标记为<code>dirty </code>的 <code>component </code>进行重新绘制.</li>
+<li>选择性地进行子树渲染。可以重写<code>shouldComponentUpdate</code>从而提高<code>diff</code>的性能</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Interview</category>
+      </categories>
+      <tags>
+        <tag>Front-end</tag>
+        <tag>Interview Questions</tag>
+      </tags>
+  </entry>
 </search>

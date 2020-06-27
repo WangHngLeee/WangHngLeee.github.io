@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Front-end Interview Note 8 💪"><meta name="keywords" content="Front-end,Interview Questions"><meta name="author" content="HongLeee"><meta name="copyright" content="HongLeee"><title>Front-end Interview Note 8 💪 | Leee's World</title><link rel="shortcut icon" href="/a1.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-7147375581336623',
+  enable_page_level_ads: 'true'
+});
+</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166070746-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">React</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#React-中-keys-的作用"><span class="toc-number">1.0.1.</span> <span class="toc-text">React 中 keys 的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传入-setState-函数的第二个参数的作用"><span class="toc-number">1.0.2.</span> <span class="toc-text">传入 setState 函数的第二个参数的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React-中-refs-的作用"><span class="toc-number">1.0.3.</span> <span class="toc-text">React 中 refs 的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在生命周期中的哪一步应该发起-AJAX-请求"><span class="toc-number">1.0.4.</span> <span class="toc-text">在生命周期中的哪一步应该发起 AJAX 请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React-中的事件处理逻辑"><span class="toc-number">1.0.5.</span> <span class="toc-text">React 中的事件处理逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redux中间件"><span class="toc-number">1.0.6.</span> <span class="toc-text">redux中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么虚拟dom会提高性能"><span class="toc-number">1.0.7.</span> <span class="toc-text">为什么虚拟dom会提高性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#diff算法"><span class="toc-number">1.0.8.</span> <span class="toc-text">diff算法</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/05/11/YYYDdf.jpg"></div><div class="author-info__name text-center">HongLeee</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/WangHngLeee">+ Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">136</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">50</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">23</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://res.cloudinary.com/dhgcccpqm/image/upload/v1592016388/Yosemite_zixphv.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Leee's World</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About Me</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Front-end Interview Note 8 💪</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 06-27-2020</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Interview/">Interview</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1>React</h1>
+<h3 id="React-中-keys-的作用">React 中 keys 的作用</h3>
+<blockquote>
+<p><code>Keys</code>是 <code>React</code> 用于追踪哪些列表中元素被修改、被添加或者被移除的 <code>辅助标识</code></p>
+</blockquote>
+<ul>
+<li>在开发中，需要保证某个元素的 <code>key</code> 在其同级元素中具有唯一性。在 <code>React Diff</code> 算法中，<code> React</code> 会借助元素的 <code>Key</code> 值来判断该元素是新近创建的还是被移动而来的元素，从而减少不必要的元素重渲染。此外，React 还需要借助 <code>Key</code> 值来判断元素与本地状态的关联关系。</li>
+</ul>
+<h3 id="传入-setState-函数的第二个参数的作用">传入 setState 函数的第二个参数的作用</h3>
+<blockquote>
+<p>该函数会在<code>setState</code>函数调用完成并且组件开始重渲染的时候被调用，可以用该函数来监听渲染是否完成。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(</span><br><span class="line">  &#123; <span class="attr">username</span>: <span class="string">'tylermcginnis33'</span> &#125;,</span><br><span class="line">  () =&gt; <span class="built_in">console</span>.log(<span class="string">'setState has finished and the component has re-rendered.'</span>)<span class="comment">//渲染完成才会输出log</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    streak: prevState.streak + props.count</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="React-中-refs-的作用">React 中 refs 的作用</h3>
+<ul>
+<li><code>Refs</code> 是 <code>React</code> 提供给的能够安全访问 <code>DOM </code>元素或者某个组件实例的句柄</li>
+<li>可以为元素添加<code>ref</code>属性，然后在回调函数中接受该元素在 <code>DOM</code> 树中的句柄，该值会作为回调函数的第一个参数返回</li>
+</ul>
+<h3 id="在生命周期中的哪一步应该发起-AJAX-请求">在生命周期中的哪一步应该发起 AJAX 请求</h3>
+<blockquote>
+<p>应将AJAX 请求放到 <code>componentDidMount</code> 函数中执行</p>
+</blockquote>
+<ul>
+<li>
+<p><code>React</code> 下一代调和算法 <code>Fiber</code> 会通过开始或停止渲染的方式优化应用性能，会影响到 <code>componentWillMount</code> 的触发次数，会使得<code>componentWillMount</code> 这个生命周期函数的调用次数变得不确定。<code>React</code> 可能会多次频繁调用 <code>componentWillMount</code>。如果将 <code>AJAX</code> 请求放到 <code>componentWillMount</code> 函数中，那么会被触发多次，不采用。</p>
+</li>
+<li>
+<p>如果我们将<code> AJAX</code> 请求放置在生命周期的其他函数中，我们并不能保证请求仅在组件挂载完毕后才会要求响应。如果我们的数据请求在组件挂载之前就完成，并且调用了<code>setState</code>函数将数据添加到组件状态中，对于未挂载的组件则会报错。而在 <code>componentDidMount</code> 函数中进行 <code>AJAX</code> 请求则能有效避免这个问题。</p>
+</li>
+</ul>
+<hr>
+<h3 id="React-中的事件处理逻辑">React 中的事件处理逻辑</h3>
+<blockquote>
+<p>为了解决跨浏览器兼容性问题，<code>React</code> 将浏览器原生事件（<code>Browser Native Event</code>）封装为合成事件（<code>SyntheticEvent</code>）传入设置的事件处理器中。合成事件提供了与原生事件相同的接口，不过它们屏蔽了底层浏览器的细节差异，保证了行为的一致性；另外，<code>React</code> 并没有直接将事件附着到子元素上，而是以单一事件监听器的方式将所有的事件发送到顶层进行处理。这样 <code>React</code> 在更新 <code>DOM</code> 的时候就不需要考虑如何去处理附着在 <code>DOM</code> 上的事件监听器，最终达到优化性能的目的。</p>
+</blockquote>
+<h3 id="redux中间件">redux中间件</h3>
+<blockquote>
+<p>中间件提供第三方插件的模式，自定义拦截 <code>action</code> -&gt; <code>reducer</code> 的过程。变为 <code>action</code> -&gt; <code>middlewares</code> -&gt; <code>reducer </code>。这种机制可以改变数据流，实现如异步<code> action</code> ，<code>action</code> 过滤，日志输出，异常报告等功能。</p>
+</blockquote>
+<ul>
+<li><code>redux-logger</code>：提供日志输出</li>
+<li><code>redux-thunk</code>：处理异步操作</li>
+<li><code>redux-promise</code>：处理异步操作，<code>actionCreator</code>的返回值是<code>promise</code></li>
+</ul>
+<h3 id="为什么虚拟dom会提高性能">为什么虚拟dom会提高性能</h3>
+<blockquote>
+<p>虚拟<code>dom</code>相当于在<code>js</code>和真实<code>dom</code>中间加了一个缓存，利用<code>dom diff</code>算法避免了没有必要的<code>dom</code>操作，从而提高性能</p>
+</blockquote>
+<p><strong>具体实现步骤如下</strong></p>
+<ul>
+<li>用 <code>JavaScript</code> 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 <code>DOM</code> 树，插到文档当中。</li>
+<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异。</li>
+<li>把2所记录的差异应用到步骤1所构建的真正的<code>DOM</code>树上，视图就更新。</li>
+</ul>
+<h3 id="diff算法">diff算法</h3>
+<ul>
+<li>把树形结构按照层级分解，只比较同级元素。</li>
+<li>给列表结构的每个单元添加唯一的<code>key</code>属性，方便比较。</li>
+<li><code>React</code> 只会匹配相同 <code>class</code> 的 <code>component</code>（<code>class</code>指的是组件的名字）</li>
+<li>合并操作，调用 <code>component</code> 的 <code>setState</code> 方法的时候, <code>React</code> 将其标记为 - <code>dirty</code>。到每一个事件循环结束, <code>React</code> 会检查所有标记 ，仅将标记为<code>dirty </code>的 <code>component </code>进行重新绘制.</li>
+<li>选择性地进行子树渲染。可以重写<code>shouldComponentUpdate</code>从而提高<code>diff</code>的性能</li>
+</ul>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Front-end/">Front-end</a><a class="post-meta__tags" href="/tags/Interview-Questions/">Interview Questions</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/9999/12/31/problemslist/"><i class="fa fa-chevron-left">  </i><span>Review Problems List 📌</span></a></div><div class="next-post pull-right"><a href="/2020/06/26/frontend-interview-07/"><span>Front-end Interview Note 7 💪</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'true' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'osOa9nOdMvJ7waVycMHyXcpL-gzGzoHsz',
+  appKey:'k2MfP5O1nYredg5XqqbEH6DC',
+  placeholder:'Add your first comment here!',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'en'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://res.cloudinary.com/dhgcccpqm/image/upload/v1592016388/Yosemite_zixphv.png)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By HongLeee</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-glasses"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
