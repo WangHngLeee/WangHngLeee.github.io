@@ -6164,7 +6164,7 @@ A[i] must be the prefix of A[i + 1], A[i + 2], …, A[j].</p>
     <title>Leetcode EveryDay 106 / Second-Round 01</title>
     <url>/2020/07/10/second-round-1/</url>
     <content><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-398-Random-Pick-Index-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">398. Random Pick Index</font></td></tr></table></h2>
-<p><a href="https://leetcode.com/problems/random-pick-index/" target="_blank" rel="noopener"><font size="4">ðŸ”— Question Link </font></a></p>
+<p><a href="https://leetcode.com/problems/random-pick-index/" target="_blank" rel="noopener"><font size="4">🔗 Question Link </font></a></p>
 <h3 id="Examples">Examples</h3>
 <p>Given an array of integers with possible duplicates, randomly output the index of a given target number. You can assume that the given target number must exist in the array.</p>
 <p>Note:<br>
@@ -6182,7 +6182,7 @@ The array size can be very large. Solution that uses too much extra space will n
 <a id="more"></a>
 <hr>
 <h2 id="table-tr-td-bgcolor-F5B041-font-color-white-394-Decode-String-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">394. Decode String</font></td></tr></table></h2>
-<p><a target="_blank" href="https://leetcode.com/problems/decode-string/"><font size="4">🔗Question Link </font></a></p>
+<p><a target="_blank" href="https://leetcode.com/problems/decode-string/"><font size="4">🔗 Question Link </font></a></p>
 <h3 id="Examples-v2">Examples</h3>
 <p>Given an encoded string, return its decoded string.</p>
 <p>The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.</p>
@@ -6194,7 +6194,7 @@ The array size can be very large. Solution that uses too much extra space will n
 <p>Keep two stack of both index and stringbuilder. When we meet <code>[</code> then we add previous stringbuilder and count to the stack, and reset both stringbuider and count. When we meet <code>]</code> we have to add current stringbuilder to the previous stringbuilder in the stack.</p>
 <hr>
 <h2 id="table-tr-td-bgcolor-F5B041-font-color-white-385-Mini-Parser-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">385. Mini Parser</font></td></tr></table></h2>
-<p><a target="_blank" href="https://leetcode.com/problems/mini-parser/"><font size="4">🔗Question Link </font></a></p>
+<p><a target="_blank" href="https://leetcode.com/problems/mini-parser/"><font size="4">🔗 Question Link </font></a></p>
 <h3 id="Examples-v3">Examples</h3>
 <p>Given a nested list of integers represented as a string, implement a parser to deserialize it.</p>
 <p>Each element is either an integer, or a list – whose elements may also be integers or other lists.</p>
@@ -6208,7 +6208,7 @@ String contains only digits 0-9, [, - , ].</p>
 <p>When we meet <code>[</code> it means we have to add new nestedinteger into the peek one in stack.And then add current into the stack to prepare for the upcoming nestedinteger list. When we meet <code>]</code> it means we get the end of current nestedinteger. So we just pop up the current peek of stack.</p>
 <hr>
 <h2 id="table-tr-td-bgcolor-F5B041-font-color-white-384-Shuffle-an-Array-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">384. Shuffle an Array</font></td></tr></table></h2>
-<p><a target="_blank" href="https://leetcode.com/problems/shuffle-an-array/"><font size="4">🔗Question Link </font></a></p>
+<p><a target="_blank" href="https://leetcode.com/problems/shuffle-an-array/"><font size="4">🔗 Question Link </font></a></p>
 <h3 id="Examples-v4">Examples</h3>
 <p>Shuffle a set of numbers without duplicates.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example:</span><br><span class="line">// Init an array with set 1, 2, and 3.</span><br><span class="line">int[] nums = &#123;1,2,3&#125;;</span><br><span class="line">Solution solution = new Solution(nums);</span><br><span class="line"></span><br><span class="line">// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.</span><br><span class="line">solution.shuffle();</span><br><span class="line"></span><br><span class="line">// Resets the array back to its original configuration [1,2,3].</span><br><span class="line">solution.reset();</span><br><span class="line"></span><br><span class="line">// Returns the random shuffling of array [1,2,3].</span><br><span class="line">solution.shuffle();</span><br></pre></td></tr></table></figure>
