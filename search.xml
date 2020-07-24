@@ -31,6 +31,95 @@
     
     
     <entry>
+      <title>Review | Medium | 138. Copy List with Random Pointer</title>
+      <link href="/2020/07/23/138.%20Copy%20List%20with%20Random%20Pointer/"/>
+      <url>/2020/07/23/138.%20Copy%20List%20with%20Random%20Pointer/</url>
+      
+        <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-138-Copy-List-with-Random-Pointer-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">138. Copy List with Random Pointer</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/copy-list-with-random-pointer/"><font size="4">🔗 Leetcode Link</font></a></p><p><a target="_blank" href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/"><font size="4">🔗Leetcode-CN Link</font></a></p><h3 id="Example">Example</h3><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p><p>Return a deep copy of the list.</p><p>The Linked List is represented in the input/output as a list of n nodes. Each node is represented as a pair of [val, random_index] where:</p><p>val: an integer representing Node.val</p><p>random_index: the index of the node (range from 0 to n-1) where random pointer points to, or null if it does not point to any node.</p><img src="https://assets.leetcode.com/uploads/2019/12/18/e1.png" alt="leetcode 138"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]</span><br><span class="line">Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><p>Easy to come up with <code>HashMap</code> solution. Keep record of the node and it’s new copied one. And assign each next and ramdon to the copied one.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        Map&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Node node = head;</span><br><span class="line">        <span class="keyword">while</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            map.put(node, <span class="keyword">new</span> Node(node.val));</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        node = head;</span><br><span class="line">        <span class="keyword">while</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            map.get(node).next = map.get(node.next);</span><br><span class="line">            map.get(node).random = map.get(node.random);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> map.get(head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>T:O(N) S:O(N)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode Cracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Code-Review </tag>
+            
+            <tag> LinkedList </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Review | Medium | 426. Convert Binary Search Tree to Sorted Doubly Linked List</title>
+      <link href="/2020/07/23/426.%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List/"/>
+      <url>/2020/07/23/426.%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List/</url>
+      
+        <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">426. Convert Binary Search Tree to Sorted Doubly Linked List</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/"><font size="4">🔗 Leetcode Link</font></a></p><p><a target="_blank" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/"><font size="4">🔗Leetcode-CN Link</font></a></p><h3 id="Example">Example</h3><p>Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.</p><p>You can think of the left and right pointers as synonymous to the predecessor and successor pointers in a doubly-linked list. For a circular doubly linked list, the predecessor of the first element is the last element, and the successor of the last element is the first element.</p><p>We want to do the transformation in place. After the transformation, the left pointer of the tree node should point to its predecessor, and the right pointer should point to its successor. You should return the pointer to the smallest element of the linked list.</p><img src="https://assets.leetcode.com/uploads/2018/10/12/bstdlloriginalbst.png"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: root = [4,2,5,1,3]</span><br></pre></td></tr></table></figure><img src="https://assets.leetcode.com/uploads/2018/10/12/bstdllreturndll.png"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output: [1,2,3,4,5]</span><br></pre></td></tr></table></figure><img src="https://assets.leetcode.com/uploads/2018/10/12/bstdllreturnbst.png"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Explanation: The figure below shows the transformed BST. The solid line indicates the successor relationship, while the dashed line means the predecessor relationship.</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><p>Using the benifit of inorder to traverse the tree.</p><p>As we all know that inorder is an assending array. So we can using DFS to inorder traverse the whole tree.</p><p>Hence during the middle line code, all we need to do is linking the nodes and reassign the new node to the variables.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    Node pre = <span class="keyword">null</span>, head = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">treeToDoublyList</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        dfs(root);</span><br><span class="line">        pre.right = head; <span class="comment">// link the pre.right to the head</span></span><br><span class="line">        head.left = pre;  <span class="comment">// link the head.left to the pre. In order to make the listnode cycled.</span></span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node cur)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cur == <span class="keyword">null</span>)<span class="keyword">return</span>;</span><br><span class="line">        dfs(cur.left);</span><br><span class="line">        <span class="keyword">if</span>(pre == <span class="keyword">null</span>)head = cur; <span class="comment">// pre is used to store the left node of cur. If pre is null, it means cur has no node in the left, so the head should be cur.</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            pre.right = cur; <span class="comment">// otherwise we link pre node to cur using pre.right = cur like `pre-&gt;cur`; </span></span><br><span class="line">        &#125;</span><br><span class="line">        cur.left = pre; <span class="comment">// linking pre to the cur node like `pre&lt;-cur` (We have link those two before from `pre-&gt;cur`)</span></span><br><span class="line">        pre = cur; <span class="comment">// updating the value of pre and keeping dfs.</span></span><br><span class="line">        dfs(cur.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode Cracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Code-Review </tag>
+            
+            <tag> LinkedList </tag>
+            
+            <tag> BST </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Review | Hard | 297. Serialize and Deserialize Binary Tree</title>
+      <link href="/2020/07/23/297.%20Serialize%20and%20Deserialize%20Binary%20Tree/"/>
+      <url>/2020/07/23/297.%20Serialize%20and%20Deserialize%20Binary%20Tree/</url>
+      
+        <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-E74C3C-font-color-white-297-Serialize-and-Deserialize-Binary-Tree-font-td-tr-table"><table><tr><td bgcolor="#E74C3C"><font color="white">297. Serialize and Deserialize Binary Tree</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"><font size="4">🔗 Leetcode Link</font></a></p><p><a target="_blank" href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/submissions/"><font size="4">🔗Leetcode-CN Link</font></a></p><h3 id="Example">Example</h3><p>Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.</p><p>Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work.</p><p>You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">You may serialize the following tree:</span><br><span class="line"></span><br><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   3</span><br><span class="line">     / \</span><br><span class="line">    4   5</span><br><span class="line"></span><br><span class="line">as &quot;[1,2,3,null,null,4,5]&quot;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Clarification: The above format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><ul><li><p>Serialize: Using stringbuilder to take tree into a string split with &quot; &quot; using preorder + dfs.</p></li><li><p>Deserialize: Using the result from serialize to form a new tree preorderly.</p></li></ul><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        serial(root,res);</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serial</span><span class="params">(TreeNode root, StringBuilder res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)res.append(<span class="string">"null"</span>).append(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            res.append(root.val).append(<span class="string">" "</span>);</span><br><span class="line">            serial(root.left,res);</span><br><span class="line">            serial(root.right,res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deserialize</span><span class="params">(String source)</span></span>&#123;</span><br><span class="line">        Queue&lt;String&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        String[] strs = source.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(String str : strs)&#123;</span><br><span class="line">            queue.add(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> des(queue);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">des</span><span class="params">(Queue&lt;String&gt; queue)</span></span>&#123;</span><br><span class="line">        String cur = queue.poll();</span><br><span class="line">        <span class="keyword">if</span>(cur.equals(<span class="string">"null"</span>))<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        TreeNode node = <span class="keyword">new</span> TreeNode(Integer.parseInt(cur));</span><br><span class="line">        node.left = des(queue);</span><br><span class="line">        node.right = des(queue);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode Cracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Graph </tag>
+            
+            <tag> Code-Review </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Review | Medium | 255. Verify Preorder Sequence in Binary Search Tree</title>
       <link href="/2020/07/22/255.%20Verify%20Preorder%20Sequence%20in%20Binary%20Search%20Tree/"/>
       <url>/2020/07/22/255.%20Verify%20Preorder%20Sequence%20in%20Binary%20Search%20Tree/</url>
