@@ -46,6 +46,40 @@
   </entry>
   
   <entry>
+    <title>Review | Hard | 1153. String Transforms Into Another String</title>
+    <link href="WangHngLeee.github.io/2020/07/27/1153.%20String%20Transforms%20Into%20Another%20String/"/>
+    <id>WangHngLeee.github.io/2020/07/27/1153. String Transforms Into Another String/</id>
+    <published>2020-07-27T23:27:29.000Z</published>
+    <updated>2020-07-28T02:30:41.619Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-E74C3C-font-color-white-1153-String-Transforms-Into-Another-String-font-td-tr-table"><table><tr><td bgcolor="#E74C3C"><font color="white">1153. String Transforms Into Another String</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/string-transforms-into-another-string/"><font size="4">🔗  Question Link </font></a></p><h3 id="Examples">Examples</h3><p>Given two strings str1 and str2 of the same length, determine whether you can transform str1 into str2 by doing zero or more conversions.</p><p>In one conversion you can convert all occurrences of one character in str1 to any other lowercase English character.</p><p>Return true if and only if you can transform str1 into str2.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: str1 = &quot;aabcc&quot;, str2 = &quot;ccdee&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Convert &apos;c&apos; to &apos;e&apos; then &apos;b&apos; to &apos;d&apos; then &apos;a&apos; to &apos;c&apos;. Note that the order of conversions matter.</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: str1 = &quot;leetcode&quot;, str2 = &quot;codeleet&quot;</span><br><span class="line">Output: false</span><br><span class="line">Explanation: There is no way to transform str1 to str2.</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><h4 id="Tricky-Part">Tricky Part</h4><p>We can use HashMap to store the link of chars. For example,</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a -&gt; b, b-&gt;c , c-&gt;d</span><br></pre></td></tr></table></figure><p>So each time when we scan from both str1 and str2, we check the str2 character with the one stored in map of str1, if it non exist then set default one with str2’ char. Otherwise, if they are different, like the link in map is <code>a-&gt;c</code> but the reality is <code>a-&gt;d</code> then return false, because one character can’t transform to two different chars at same time.</p><h4 id="Special-Edge-case">Special/Edge case :</h4><p>First case is two string are equal then we return true.</p><p>Second one is like the unique chars of both strs are same and have 26 chars. But in order to transform one to another we need a temp char that is unused, like <code> temp -&gt; a, a -&gt; b , b-&gt; c , c-&gt; temp</code>. Same as swap two number in array. So in this case we can’t perform the transformation, because there is just 26 chars and no more for us to mark as temp, so just return false.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canConvert</span><span class="params">(String str1, String str2)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(str1.equals(str2))<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(str1 == <span class="keyword">null</span> || str1.length() == <span class="number">0</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str1.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.getOrDefault(str1.charAt(i), str2.charAt(i)) != str2.charAt(i))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(str1.charAt(i),str2.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;(map.values());</span><br><span class="line">        <span class="keyword">return</span> set.size() &lt; <span class="number">26</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;table-tr-td-bgcolor-E74C3C-font-color-white-1153-String-Transforms-Into-Another-String-font-td-tr-table&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=&quot;#E74C3C&quot;&gt;&lt;font color=&quot;white&quot;&gt;1153. String Transforms Into Another String&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode.com/problems/string-transforms-into-another-string/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Question Link &lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Examples&quot;&gt;Examples&lt;/h3&gt;
+&lt;p&gt;Given two strings str1 and str2 of the same length, determine whether you can transform str1 into str2 by doing zero or more conversions.&lt;/p&gt;
+&lt;p&gt;In one conversion you can convert all occurrences of one character in str1 to any other lowercase English character.&lt;/p&gt;
+&lt;p&gt;Return true if and only if you can transform str1 into str2.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Example 1:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: str1 = &amp;quot;aabcc&amp;quot;, str2 = &amp;quot;ccdee&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: Convert &amp;apos;c&amp;apos; to &amp;apos;e&amp;apos; then &amp;apos;b&amp;apos; to &amp;apos;d&amp;apos; then &amp;apos;a&amp;apos; to &amp;apos;c&amp;apos;. Note that the order of conversions matter.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Example 2:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: str1 = &amp;quot;leetcode&amp;quot;, str2 = &amp;quot;codeleet&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: There is no way to transform str1 to str2.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Leetcode Cracking" scheme="WangHngLeee.github.io/categories/Leetcode-Cracking/"/>
+    
+    
+      <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
+    
+      <category term="String" scheme="WangHngLeee.github.io/tags/String/"/>
+    
+      <category term="Graph" scheme="WangHngLeee.github.io/tags/Graph/"/>
+    
+      <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Review | Medium | 785. Is Graph Bipartite?</title>
     <link href="WangHngLeee.github.io/2020/07/27/785.%20Is%20Graph%20Bipartite?/"/>
     <id>WangHngLeee.github.io/2020/07/27/785. Is Graph Bipartite?/</id>
@@ -130,40 +164,6 @@
     
     
       <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
-    
-      <category term="Graph" scheme="WangHngLeee.github.io/tags/Graph/"/>
-    
-      <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Review | Hard | 1153. String Transforms Into Another String</title>
-    <link href="WangHngLeee.github.io/2020/07/25/1153.%20String%20Transforms%20Into%20Another%20String/"/>
-    <id>WangHngLeee.github.io/2020/07/25/1153. String Transforms Into Another String/</id>
-    <published>2020-07-25T22:27:29.000Z</published>
-    <updated>2020-07-28T02:29:40.327Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-E74C3C-font-color-white-1153-String-Transforms-Into-Another-String-font-td-tr-table"><table><tr><td bgcolor="#E74C3C"><font color="white">1153. String Transforms Into Another String</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/string-transforms-into-another-string/"><font size="4">🔗  Question Link </font></a></p><h3 id="Examples">Examples</h3><p>Given two strings str1 and str2 of the same length, determine whether you can transform str1 into str2 by doing zero or more conversions.</p><p>In one conversion you can convert all occurrences of one character in str1 to any other lowercase English character.</p><p>Return true if and only if you can transform str1 into str2.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: str1 = &quot;aabcc&quot;, str2 = &quot;ccdee&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Convert &apos;c&apos; to &apos;e&apos; then &apos;b&apos; to &apos;d&apos; then &apos;a&apos; to &apos;c&apos;. Note that the order of conversions matter.</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: str1 = &quot;leetcode&quot;, str2 = &quot;codeleet&quot;</span><br><span class="line">Output: false</span><br><span class="line">Explanation: There is no way to transform str1 to str2.</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><h4 id="Tricky-Part">Tricky Part</h4><p>We can use HashMap to store the link of chars. For example,</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a -&gt; b, b-&gt;c , c-&gt;d</span><br></pre></td></tr></table></figure><p>So each time when we scan from both str1 and str2, we check the str2 character with the one stored in map of str1, if it non exist then set default one with str2’ char. Otherwise, if they are different, like the link in map is <code>a-&gt;c</code> but the reality is <code>a-&gt;d</code> then return false, because one character can’t transform to two different chars at same time.</p><h4 id="Special-Edge-case">Special/Edge case :</h4><p>First case is two string are equal then we return true.</p><p>Second one is like the unique chars of both strs are same and have 26 chars. But in order to transform one to another we need a temp char that is unused, like <code> temp -&gt; a, a -&gt; b , b-&gt; c , c-&gt; temp</code>. Same as swap two number in array. So in this case we can’t perform the transformation, because there is just 26 chars and no more for us to mark as temp, so just return false.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canConvert</span><span class="params">(String str1, String str2)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(str1.equals(str2))<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(str1 == <span class="keyword">null</span> || str1.length() == <span class="number">0</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str1.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.getOrDefault(str1.charAt(i), str2.charAt(i)) != str2.charAt(i))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(str1.charAt(i),str2.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;(map.values());</span><br><span class="line">        <span class="keyword">return</span> set.size() &lt; <span class="number">26</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;table-tr-td-bgcolor-E74C3C-font-color-white-1153-String-Transforms-Into-Another-String-font-td-tr-table&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=&quot;#E74C3C&quot;&gt;&lt;font color=&quot;white&quot;&gt;1153. String Transforms Into Another String&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode.com/problems/string-transforms-into-another-string/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Question Link &lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Examples&quot;&gt;Examples&lt;/h3&gt;
-&lt;p&gt;Given two strings str1 and str2 of the same length, determine whether you can transform str1 into str2 by doing zero or more conversions.&lt;/p&gt;
-&lt;p&gt;In one conversion you can convert all occurrences of one character in str1 to any other lowercase English character.&lt;/p&gt;
-&lt;p&gt;Return true if and only if you can transform str1 into str2.&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Example 1:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: str1 = &amp;quot;aabcc&amp;quot;, str2 = &amp;quot;ccdee&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: Convert &amp;apos;c&amp;apos; to &amp;apos;e&amp;apos; then &amp;apos;b&amp;apos; to &amp;apos;d&amp;apos; then &amp;apos;a&amp;apos; to &amp;apos;c&amp;apos;. Note that the order of conversions matter.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Example 2:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: str1 = &amp;quot;leetcode&amp;quot;, str2 = &amp;quot;codeleet&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: There is no way to transform str1 to str2.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Leetcode Cracking" scheme="WangHngLeee.github.io/categories/Leetcode-Cracking/"/>
-    
-    
-      <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
-    
-      <category term="String" scheme="WangHngLeee.github.io/tags/String/"/>
     
       <category term="Graph" scheme="WangHngLeee.github.io/tags/Graph/"/>
     
