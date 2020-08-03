@@ -6999,7 +6999,7 @@ You may assume that duplicates do not exist in the tree.</p>
 <p>Given a message and a timestamp (in seconds granularity), return true if the message should be printed in the given timestamp, otherwise returns false.</p>
 <p>It is possible that several messages arrive roughly at the same time.</p>
 <p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Logger logger = new Logger();</span><br><span class="line"></span><br><span class="line">// logging string &quot;foo&quot; at timestamp 1</span><br><span class="line">logger.shouldPrintMessage(1, &quot;foo&quot;); returns true; </span><br><span class="line"></span><br><span class="line">// logging string &quot;bar&quot; at timestamp 2</span><br><span class="line">logger.shouldPrintMessage(2,&quot;bar&quot;); returns true;</span><br><span class="line"></span><br><span class="line">// logging string &quot;foo&quot; at timestamp 3</span><br><span class="line">logger.shouldPrintMessage(3,&quot;foo&quot;); returns false;</span><br><span class="line"></span><br><span class="line">// logging string &quot;bar&quot; at timestamp 8</span><br><span class="line">logger.shouldPrintMessage(8,&quot;bar&quot;); returns false;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Logger logger = new Logger();</span><br><span class="line"></span><br><span class="line">// logging string &quot;foo&quot; at timestamp 1</span><br><span class="line">logger.shouldPrintMessage(1, &quot;foo&quot;); returns true;</span><br><span class="line"></span><br><span class="line">// logging string &quot;bar&quot; at timestamp 2</span><br><span class="line">logger.shouldPrintMessage(2,&quot;bar&quot;); returns true;</span><br><span class="line"></span><br><span class="line">// logging string &quot;foo&quot; at timestamp 3</span><br><span class="line">logger.shouldPrintMessage(3,&quot;foo&quot;); returns false;</span><br><span class="line"></span><br><span class="line">// logging string &quot;bar&quot; at timestamp 8</span><br><span class="line">logger.shouldPrintMessage(8,&quot;bar&quot;); returns false;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="Solution">Solution</h3>
 <h4 id="Navie">Navie</h4>
@@ -7029,6 +7029,31 @@ You may assume that duplicates do not exist in the tree.</p>
         <tag>Leetcode</tag>
         <tag>Code-Review</tag>
         <tag>Design</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Review | Easy | 125. Valid Palindrome</title>
+    <url>/2020/08/03/125.%20Valid%20Palindrome/</url>
+    <content><![CDATA[<h2 id="table-tr-td-bgcolor-28B463-font-color-white-125-Valid-Palindrome-font-td-tr-table"><table><tr><td bgcolor="#28B463"><font color="white">125. Valid Palindrome</font></td></tr></table></h2>
+<p><a target="_blank" href="https://leetcode.com/problems/valid-palindrome/"><font size="4">LeetCode Link </font></a></p>
+<h3 id="Examples">Examples</h3>
+<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>Note: For the purpose of this problem, we define empty string as valid palindrome…</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: &quot;A man, a plan, a canal: Panama&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: &quot;race a car&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Solution">Solution</h3>
+<p>Using two pointers to scan the string from start and end. Skip all <code>unletterOrDigit</code> character like ’ ’ and ‘.’ and other signs. Then check two characters is same or not.</p>
+<h3 id="Code">Code</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = s.length()-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">char</span> l = s.charAt(left);</span><br><span class="line">            <span class="keyword">char</span> r = s.charAt(right);</span><br><span class="line">            <span class="keyword">if</span>(!Character.isLetterOrDigit(l))&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!Character.isLetterOrDigit(r))&#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(Character.toLowerCase(l) != Character.toLowerCase(r))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                right--;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>T:O(N) S:O(1)</p>
+]]></content>
+      <categories>
+        <category>Leetcode Cracking</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>Code-Review</tag>
+        <tag>Two Pointers</tag>
       </tags>
   </entry>
 </search>
