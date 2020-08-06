@@ -7120,4 +7120,44 @@ You may assume that duplicates do not exist in the tree.</p>
         <tag>LinkedList</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Review | Medium | 516. Longest Palindromic Subsequence</title>
+    <url>/2020/08/06/516.%20Longest%20Palindromic%20Subsequence/</url>
+    <content><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-516-Longest-Palindromic-Subsequence-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">516. Longest Palindromic Subsequence</font></td></tr></table></h2>
+<p><a target="_blank" href="https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/"><font size="4">🔗  Leetcode Link</font></a></p>
+<h3 id="Exapmles">Exapmles</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic subsequence&apos;s length in s. You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line">Input:</span><br><span class="line"></span><br><span class="line">&quot;bbbab&quot;</span><br><span class="line">Output:</span><br><span class="line">4</span><br><span class="line">One possible longest palindromic subsequence is &quot;bbbb&quot;.</span><br><span class="line"> </span><br><span class="line">Example 2:</span><br><span class="line">Input:</span><br><span class="line"></span><br><span class="line">&quot;cbbd&quot;</span><br><span class="line">Output:</span><br><span class="line">2</span><br><span class="line">One possible longest palindromic subsequence is &quot;bb&quot;.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Solution">Solution</h3>
+<p>It’s a typical palindromic string problem. When we see subsequence instead of substring, it means it can be interruptted and not continous, and we always using <code>DP </code> to solve that kind of uncontinous problem.</p>
+<p>We first create a <code>two-dimension DP array</code> to store the length.</p>
+<p><code>dp[i][j]</code> means the max palindromic subsequence between start of <code>i</code> and end of<code>j</code> in the string <code>s</code></p>
+<p><code>Transition Function</code> :</p>
+<ol>
+<li>When <code>s.charAt(i) == s.charAt(j) </code>  :  <code>dp[i][j] = dp[i+1][j-1] + 2</code>
+<ul>
+<li>It looks like we expand the range of current <code>i+1, j-1</code> to <code>i,j</code>, which is extremely like two pointers , one with left+1, and one with right-1. Instead, in this problem we solve from inside to outside.</li>
+</ul>
+</li>
+<li>When <code>s.charAt(i) != s.charAt(j) </code>  : <code>dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1])</code>
+<ul>
+<li>If ther are not the same, we just choosing the range from <code>left+1,right</code> or <code>left,right-1</code> because the subsequence can be interuppted.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Code">Code</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestPalindromeSubseq</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            dp[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(i) == s.charAt(j))&#123;</span><br><span class="line">                    dp[i][j] = dp[i+<span class="number">1</span>][j-<span class="number">1</span>] +<span class="number">2</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = Math.max(dp[i+<span class="number">1</span>][j], dp[i][j-<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>T:O(N^2) S:O(N^2)</p>
+]]></content>
+      <categories>
+        <category>Leetcode Cracking</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>Code-Review</tag>
+        <tag>String</tag>
+        <tag>DP</tag>
+        <tag>Palindromic</tag>
+      </tags>
+  </entry>
 </search>
