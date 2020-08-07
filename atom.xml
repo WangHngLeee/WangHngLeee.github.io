@@ -46,6 +46,49 @@
   </entry>
   
   <entry>
+    <title>Review | Hard | 992. Subarrays with K Different Integers</title>
+    <link href="WangHngLeee.github.io/2020/08/07/992.%20Subarrays%20with%20K%20Different%20Integers/"/>
+    <id>WangHngLeee.github.io/2020/08/07/992. Subarrays with K Different Integers/</id>
+    <published>2020-08-07T22:27:29.000Z</published>
+    <updated>2020-08-07T23:46:38.145Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-E74C3C-font-color-white-992-Subarrays-with-K-Different-Integers-font-td-tr-table"><table><tr><td bgcolor="#E74C3C"><font color="white">992. Subarrays with K Different Integers</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/subarrays-with-k-different-integers/"><font size="4">🔗  LeetCode Link </font></a></p><h3 id="Example">Example</h3><p>Given an array <code>A</code> of positive integers, call a (contiguous, not necessarily distinct) subarray of <code>A</code> <em>good</em> if the number of different integers in that subarray is exactly <code>K</code>.</p><p>(For example, <code>[1,2,3,1,2]</code> has <code>3</code> different integers: <code>1</code>, <code>2</code>, and <code>3</code>.)</p><p>Return the number of good subarrays of <code>A</code>.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A = [1,2,1,2,3], K = 2</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A = [1,2,1,3,4], K = 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].</span><br></pre></td></tr></table></figure><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 20000</code></li><li><code>1 &lt;= A[i] &lt;= A.length</code></li><li><code>1 &lt;= K &lt;= A.length</code></li></ol><a id="more"></a><h3 id="Solution">Solution</h3><p>It’s a bit different from previous <code> at most K different/distinct</code> problem. This question need just<code>K</code> different integers.</p><p>However, it’s straightforward to prove that <code>Just(K) = AtMost(K) - AtMost(K-1)</code>, so we can call the <a href="[https://leeemask.com/2020/08/07/340.%20Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters/](https://leeemask.com/2020/08/07/340. Longest Substring with At Most K Distinct Characters/)">previous kinda code</a> twice and substract them then will get the res.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysWithKDistinct</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> help(A,K) - help(A,K-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">help</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span></span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; A.length ;j++)&#123;</span><br><span class="line">            map.put(A[j],map.getOrDefault(A[j],<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">while</span>(map.size() &gt; K)&#123;</span><br><span class="line">                map.put(A[i],map.get(A[i])-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(map.get(A[i]) == <span class="number">0</span>)&#123;</span><br><span class="line">                    map.remove(A[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans += j-i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>T:O(N) S:O(N)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;table-tr-td-bgcolor-E74C3C-font-color-white-992-Subarrays-with-K-Different-Integers-font-td-tr-table&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=&quot;#E74C3C&quot;&gt;&lt;font color=&quot;white&quot;&gt;992. Subarrays with K Different Integers&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode.com/problems/subarrays-with-k-different-integers/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  LeetCode Link &lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Example&quot;&gt;Example&lt;/h3&gt;
+&lt;p&gt;Given an array &lt;code&gt;A&lt;/code&gt; of positive integers, call a (contiguous, not necessarily distinct) subarray of &lt;code&gt;A&lt;/code&gt; &lt;em&gt;good&lt;/em&gt; if the number of different integers in that subarray is exactly &lt;code&gt;K&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;(For example, &lt;code&gt;[1,2,3,1,2]&lt;/code&gt; has &lt;code&gt;3&lt;/code&gt; different integers: &lt;code&gt;1&lt;/code&gt;, &lt;code&gt;2&lt;/code&gt;, and &lt;code&gt;3&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Return the number of good subarrays of &lt;code&gt;A&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: A = [1,2,1,2,3], K = 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Example 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: A = [1,2,1,3,4], K = 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;1 &amp;lt;= A.length &amp;lt;= 20000&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 &amp;lt;= A[i] &amp;lt;= A.length&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 &amp;lt;= K &amp;lt;= A.length&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Leetcode Cracking" scheme="WangHngLeee.github.io/categories/Leetcode-Cracking/"/>
+    
+    
+      <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
+    
+      <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
+    
+      <category term="Two Pointers" scheme="WangHngLeee.github.io/tags/Two-Pointers/"/>
+    
+      <category term="Array" scheme="WangHngLeee.github.io/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Review | Medium | 340. Longest Substring with At Most K Distinct Characters</title>
     <link href="WangHngLeee.github.io/2020/08/07/340.%20Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters/"/>
     <id>WangHngLeee.github.io/2020/08/07/340. Longest Substring with At Most K Distinct Characters/</id>
@@ -653,42 +696,6 @@ Input:&lt;/p&gt;
       <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
     
       <category term="Graph" scheme="WangHngLeee.github.io/tags/Graph/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Review | Medium | 138. Copy List with Random Pointer</title>
-    <link href="WangHngLeee.github.io/2020/07/23/138.%20Copy%20List%20with%20Random%20Pointer/"/>
-    <id>WangHngLeee.github.io/2020/07/23/138. Copy List with Random Pointer/</id>
-    <published>2020-07-23T22:30:29.000Z</published>
-    <updated>2020-07-28T02:32:17.458Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-138-Copy-List-with-Random-Pointer-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">138. Copy List with Random Pointer</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/copy-list-with-random-pointer/"><font size="4">🔗  Leetcode Link</font></a></p><p><a target="_blank" href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/"><font size="4">🔗  Leetcode-CN Link</font></a></p><h3 id="Example">Example</h3><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p><p>Return a deep copy of the list.</p><p>The Linked List is represented in the input/output as a list of n nodes. Each node is represented as a pair of [val, random_index] where:</p><p>val: an integer representing Node.val</p><p>random_index: the index of the node (range from 0 to n-1) where random pointer points to, or null if it does not point to any node.</p><img src="https://assets.leetcode.com/uploads/2019/12/18/e1.png" alt="leetcode 138"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]</span><br><span class="line">Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><p>Easy to come up with <code>HashMap</code> solution. Keep record of the node and it’s new copied one. And assign each next and ramdon to the copied one.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        Map&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Node node = head;</span><br><span class="line">        <span class="keyword">while</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            map.put(node, <span class="keyword">new</span> Node(node.val));</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        node = head;</span><br><span class="line">        <span class="keyword">while</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            map.get(node).next = map.get(node.next);</span><br><span class="line">            map.get(node).random = map.get(node.random);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> map.get(head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>T:O(N) S:O(N)</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;table-tr-td-bgcolor-F5B041-font-color-white-138-Copy-List-with-Random-Pointer-font-td-tr-table&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=&quot;#F5B041&quot;&gt;&lt;font color=&quot;white&quot;&gt;138. Copy List with Random Pointer&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode.com/problems/copy-list-with-random-pointer/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Leetcode Link&lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Leetcode-CN Link&lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Example&quot;&gt;Example&lt;/h3&gt;
-&lt;p&gt;A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.&lt;/p&gt;
-&lt;p&gt;Return a deep copy of the list.&lt;/p&gt;
-&lt;p&gt;The Linked List is represented in the input/output as a list of n nodes. Each node is represented as a pair of [val, random_index] where:&lt;/p&gt;
-&lt;p&gt;val: an integer representing Node.val&lt;/p&gt;
-&lt;p&gt;random_index: the index of the node (range from 0 to n-1) where random pointer points to, or null if it does not point to any node.&lt;/p&gt;
-&lt;img src=&quot;https://assets.leetcode.com/uploads/2019/12/18/e1.png&quot; alt=&quot;leetcode 138&quot;&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Example 1:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Leetcode Cracking" scheme="WangHngLeee.github.io/categories/Leetcode-Cracking/"/>
-    
-    
-      <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
-    
-      <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
-    
-      <category term="LinkedList" scheme="WangHngLeee.github.io/tags/LinkedList/"/>
     
   </entry>
   

@@ -7286,4 +7286,41 @@ Input:</p>
         <tag>String</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Review | Hard | 992. Subarrays with K Different Integers</title>
+    <url>/2020/08/07/992.%20Subarrays%20with%20K%20Different%20Integers/</url>
+    <content><![CDATA[<h2 id="table-tr-td-bgcolor-E74C3C-font-color-white-992-Subarrays-with-K-Different-Integers-font-td-tr-table"><table><tr><td bgcolor="#E74C3C"><font color="white">992. Subarrays with K Different Integers</font></td></tr></table></h2>
+<p><a target="_blank" href="https://leetcode.com/problems/subarrays-with-k-different-integers/"><font size="4">🔗  LeetCode Link </font></a></p>
+<h3 id="Example">Example</h3>
+<p>Given an array <code>A</code> of positive integers, call a (contiguous, not necessarily distinct) subarray of <code>A</code> <em>good</em> if the number of different integers in that subarray is exactly <code>K</code>.</p>
+<p>(For example, <code>[1,2,3,1,2]</code> has <code>3</code> different integers: <code>1</code>, <code>2</code>, and <code>3</code>.)</p>
+<p>Return the number of good subarrays of <code>A</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A = [1,2,1,2,3], K = 2</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A = [1,2,1,3,4], K = 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 20000</code></li>
+<li><code>1 &lt;= A[i] &lt;= A.length</code></li>
+<li><code>1 &lt;= K &lt;= A.length</code></li>
+</ol>
+<a id="more"></a>
+<h3 id="Solution">Solution</h3>
+<p>It’s a bit different from previous <code> at most K different/distinct</code> problem. This question need just<code>K</code> different integers.</p>
+<p>However, it’s straightforward to prove that <code>Just(K) = AtMost(K) - AtMost(K-1)</code>, so we can call the <a href="[https://leeemask.com/2020/08/07/340.%20Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters/](https://leeemask.com/2020/08/07/340. Longest Substring with At Most K Distinct Characters/)">previous kinda code</a> twice and substract them then will get the res.</p>
+<h3 id="Code">Code</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysWithKDistinct</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> help(A,K) - help(A,K-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">help</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span></span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; A.length ;j++)&#123;</span><br><span class="line">            map.put(A[j],map.getOrDefault(A[j],<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">while</span>(map.size() &gt; K)&#123;</span><br><span class="line">                map.put(A[i],map.get(A[i])-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(map.get(A[i]) == <span class="number">0</span>)&#123;</span><br><span class="line">                    map.remove(A[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans += j-i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>T:O(N) S:O(N)</p>
+]]></content>
+      <categories>
+        <category>Leetcode Cracking</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>Code-Review</tag>
+        <tag>Two Pointers</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
 </search>
