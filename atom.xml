@@ -46,6 +46,41 @@
   </entry>
   
   <entry>
+    <title>Review | Medium | 340. Longest Substring with At Most K Distinct Characters</title>
+    <link href="WangHngLeee.github.io/2020/08/07/340.%20Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters/"/>
+    <id>WangHngLeee.github.io/2020/08/07/340. Longest Substring with At Most K Distinct Characters/</id>
+    <published>2020-08-07T19:30:29.000Z</published>
+    <updated>2020-08-07T23:25:50.596Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-E74C3C-font-color-white-340-Longest-Substring-with-At-Most-K-Distinct-Characters-font-td-tr-table"><table><tr><td bgcolor="#E74C3C"><font color="white">\340. Longest Substring with At Most K Distinct Characters</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/"><font size="4">🔗  Leetcode Link</font></a></p><h3 id="Examples">Examples</h3><p>Given a string, find the length of the longest substring T that contains at most <em>k</em> distinct characters.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: s = &quot;eceba&quot;, k = 2</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: T is &quot;ece&quot; which its length is 3.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: s = &quot;aa&quot;, k = 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: T is &quot;aa&quot; which its length is 2.</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><p>Typical sliding window question. Using <code>left</code> and <code>right</code> pointer to scan the string, and keep each character’s frequency in a <code>HashMap</code>.</p><p>When the size of map <code>( which is also the total num of distinct characters)</code> is greater than k, we need to substract chars from left.</p><p>When the <code>map size &lt;= 2</code>, we update the res.</p><p>This question can share the same code template with question <a href="https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/" target="_blank" rel="noopener">159. Longest Substring with At Most Two Distinct Characters</a></p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(String s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//corner case</span></span><br><span class="line">        <span class="keyword">if</span>(s == <span class="keyword">null</span> || s.length() ==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        Map&lt;Character,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> right =<span class="number">0</span>; right &lt; s.length(); right++)&#123;</span><br><span class="line">            <span class="keyword">char</span> temp = s.charAt(right);</span><br><span class="line">            map.put(temp, map.getOrDefault(temp,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">while</span>(map.size() &gt; k)&#123;</span><br><span class="line">                <span class="keyword">char</span> leftchar = s.charAt(left);</span><br><span class="line">                <span class="keyword">if</span>(map.containsKey(leftchar))&#123;</span><br><span class="line">                    map.put(leftchar,map.get(leftchar)-<span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span>(map.get(leftchar) == <span class="number">0</span>)&#123;</span><br><span class="line">                        map.remove(leftchar);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            res = Math.max(res, right - left+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>T:O(N) S:O(N)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;table-tr-td-bgcolor-E74C3C-font-color-white-340-Longest-Substring-with-At-Most-K-Distinct-Characters-font-td-tr-table&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=&quot;#E74C3C&quot;&gt;&lt;font color=&quot;white&quot;&gt;\340. Longest Substring with At Most K Distinct Characters&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Leetcode Link&lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Examples&quot;&gt;Examples&lt;/h3&gt;
+&lt;p&gt;Given a string, find the length of the longest substring T that contains at most &lt;em&gt;k&lt;/em&gt; distinct characters.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: s = &amp;quot;eceba&amp;quot;, k = 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: T is &amp;quot;ece&amp;quot; which its length is 3.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Example 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: s = &amp;quot;aa&amp;quot;, k = 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: T is &amp;quot;aa&amp;quot; which its length is 2.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Leetcode Cracking" scheme="WangHngLeee.github.io/categories/Leetcode-Cracking/"/>
+    
+    
+      <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
+    
+      <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
+    
+      <category term="Two Pointers" scheme="WangHngLeee.github.io/tags/Two-Pointers/"/>
+    
+      <category term="String" scheme="WangHngLeee.github.io/tags/String/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Review | Medium | 3. Longest Substring Without Repeating Characters</title>
     <link href="WangHngLeee.github.io/2020/08/07/3.%20Longest%20Substring%20Without%20Repeating%20Characters/"/>
     <id>WangHngLeee.github.io/2020/08/07/3. Longest Substring Without Repeating Characters/</id>
@@ -654,46 +689,6 @@ Input:&lt;/p&gt;
       <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
     
       <category term="LinkedList" scheme="WangHngLeee.github.io/tags/LinkedList/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Review | Medium | 426. Convert Binary Search Tree to Sorted Doubly Linked List</title>
-    <link href="WangHngLeee.github.io/2020/07/23/426.%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List/"/>
-    <id>WangHngLeee.github.io/2020/07/23/426. Convert Binary Search Tree to Sorted Doubly Linked List/</id>
-    <published>2020-07-23T22:30:29.000Z</published>
-    <updated>2020-07-24T04:02:41.178Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">426. Convert Binary Search Tree to Sorted Doubly Linked List</font></td></tr></table></h2><p><a target="_blank" href="https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/"><font size="4">🔗  Leetcode Link</font></a></p><p><a target="_blank" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/"><font size="4">🔗  Leetcode-CN Link</font></a></p><h3 id="Example">Example</h3><p>Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.</p><p>You can think of the left and right pointers as synonymous to the predecessor and successor pointers in a doubly-linked list. For a circular doubly linked list, the predecessor of the first element is the last element, and the successor of the last element is the first element.</p><p>We want to do the transformation in place. After the transformation, the left pointer of the tree node should point to its predecessor, and the right pointer should point to its successor. You should return the pointer to the smallest element of the linked list.</p><img src="https://assets.leetcode.com/uploads/2018/10/12/bstdlloriginalbst.png"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: root = [4,2,5,1,3]</span><br></pre></td></tr></table></figure><img src="https://assets.leetcode.com/uploads/2018/10/12/bstdllreturndll.png"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output: [1,2,3,4,5]</span><br></pre></td></tr></table></figure><img src="https://assets.leetcode.com/uploads/2018/10/12/bstdllreturnbst.png"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Explanation: The figure below shows the transformed BST. The solid line indicates the successor relationship, while the dashed line means the predecessor relationship.</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Solution">Solution</h3><p>Using the benifit of inorder to traverse the tree.</p><p>As we all know that inorder is an assending array. So we can using DFS to inorder traverse the whole tree.</p><p>Hence during the middle line code, all we need to do is linking the nodes and reassign the new node to the variables.</p><h3 id="Code">Code</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    Node pre = <span class="keyword">null</span>, head = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">treeToDoublyList</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        dfs(root);</span><br><span class="line">        pre.right = head; <span class="comment">// link the pre.right to the head</span></span><br><span class="line">        head.left = pre;  <span class="comment">// link the head.left to the pre. In order to make the listnode cycled.</span></span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node cur)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cur == <span class="keyword">null</span>)<span class="keyword">return</span>;</span><br><span class="line">        dfs(cur.left);</span><br><span class="line">        <span class="keyword">if</span>(pre == <span class="keyword">null</span>)head = cur; <span class="comment">// pre is used to store the left node of cur. If pre is null, it means cur has no node in the left, so the head should be cur.</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            pre.right = cur; <span class="comment">// otherwise we link pre node to cur using pre.right = cur like `pre-&gt;cur`; </span></span><br><span class="line">        &#125;</span><br><span class="line">        cur.left = pre; <span class="comment">// linking pre to the cur node like `pre&lt;-cur` (We have link those two before from `pre-&gt;cur`)</span></span><br><span class="line">        pre = cur; <span class="comment">// updating the value of pre and keeping dfs.</span></span><br><span class="line">        dfs(cur.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;table-tr-td-bgcolor-F5B041-font-color-white-426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List-font-td-tr-table&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=&quot;#F5B041&quot;&gt;&lt;font color=&quot;white&quot;&gt;426. Convert Binary Search Tree to Sorted Doubly Linked List&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Leetcode Link&lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/&quot;&gt;&lt;font size=&quot;4&quot;&gt;🔗  Leetcode-CN Link&lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Example&quot;&gt;Example&lt;/h3&gt;
-&lt;p&gt;Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.&lt;/p&gt;
-&lt;p&gt;You can think of the left and right pointers as synonymous to the predecessor and successor pointers in a doubly-linked list. For a circular doubly linked list, the predecessor of the first element is the last element, and the successor of the last element is the first element.&lt;/p&gt;
-&lt;p&gt;We want to do the transformation in place. After the transformation, the left pointer of the tree node should point to its predecessor, and the right pointer should point to its successor. You should return the pointer to the smallest element of the linked list.&lt;/p&gt;
-&lt;img src=&quot;https://assets.leetcode.com/uploads/2018/10/12/bstdlloriginalbst.png&quot;&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Example 1:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: root = [4,2,5,1,3]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;img src=&quot;https://assets.leetcode.com/uploads/2018/10/12/bstdllreturndll.png&quot;&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Output: [1,2,3,4,5]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;img src=&quot;https://assets.leetcode.com/uploads/2018/10/12/bstdllreturnbst.png&quot;&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Explanation: The figure below shows the transformed BST. The solid line indicates the successor relationship, while the dashed line means the predecessor relationship.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Leetcode Cracking" scheme="WangHngLeee.github.io/categories/Leetcode-Cracking/"/>
-    
-    
-      <category term="Leetcode" scheme="WangHngLeee.github.io/tags/Leetcode/"/>
-    
-      <category term="Code-Review" scheme="WangHngLeee.github.io/tags/Code-Review/"/>
-    
-      <category term="LinkedList" scheme="WangHngLeee.github.io/tags/LinkedList/"/>
-    
-      <category term="BST" scheme="WangHngLeee.github.io/tags/BST/"/>
     
   </entry>
   
