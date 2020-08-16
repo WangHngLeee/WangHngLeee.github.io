@@ -7447,4 +7447,45 @@ Input:</p>
         <tag>BFS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Review | Easy | 733. Flood Fill</title>
+    <url>/2020/08/16/733.%20Flood%20Fill/</url>
+    <content><![CDATA[<h2 id="table-tr-td-bgcolor-28B463-font-color-white-733-Flood-Fill-font-td-tr-table"><table><tr><td bgcolor="#28B463"><font color="white">733. Flood Fill</font></td></tr></table></h2>
+<p><a target="_blank" href="https://leetcode.com/problems/flood-fill/"><font size="4">🔗 LeetCode Link </font></a></p>
+<h3 id="Examples">Examples</h3>
+<p>An <code>image</code> is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).</p>
+<p>Given a coordinate <code>(sr, sc)</code> representing the starting pixel (row and column) of the flood fill, and a pixel value <code>newColor</code>, “flood fill” the image.</p>
+<p>To perform a “flood fill”, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.</p>
+<p>At the end, return the modified image.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: </span><br><span class="line">image = [[1,1,1],[1,1,0],[1,0,1]]</span><br><span class="line">sr = 1, sc = 1, newColor = 2</span><br><span class="line">Output: [[2,2,2],[2,2,0],[2,0,1]]</span><br><span class="line">Explanation: </span><br><span class="line">From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected </span><br><span class="line">by a path of the same color as the starting pixel are colored with the new color.</span><br><span class="line">Note the bottom corner is not colored 2, because it is not 4-directionally connected</span><br><span class="line">to the starting pixel.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<p>The length of <code>image</code> and <code>image[0]</code> will be in the range <code>[1, 50]</code>.</p>
+<p>The given starting pixel will satisfy <code>0 &lt;= sr &lt; image.length</code> and <code>0 &lt;= sc &lt; image[0].length</code>.</p>
+<p>The value of each color in <code>image[i][j]</code> and <code>newColor</code> will be an integer in <code>[0, 65535]</code>.</p>
+<a id="more"></a>
+<h3 id="Solution">Solution</h3>
+<p>Take care of corner case that cause many times in my submission.</p>
+<p>Just return the image when the newColor is same as start point’s color.</p>
+<h4 id="BFS">BFS</h4>
+<p>It’s traditional BFS solution. Using template for BFS is enough.</p>
+<h4 id="DFS">DFS</h4>
+<p>It’s traditional DFS solution. Using template for DFS is enough.</p>
+<h3 id="Code">Code</h3>
+<h4 id="DFS-v2">DFS</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> old;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] floodFill(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor) &#123;</span><br><span class="line">        <span class="keyword">if</span>(image[sr][sc] == newColor)<span class="keyword">return</span> image;</span><br><span class="line">        m = image.length;</span><br><span class="line">        n = image[<span class="number">0</span>].length;</span><br><span class="line">        old = image[sr][sc];</span><br><span class="line">        dfs(image,sr,sc,newColor);</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> newColor)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(row&lt;<span class="number">0</span> || row &gt;= m || col &lt; <span class="number">0</span> || col &gt;= n || image[row][col] != old)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        image[row][col] = newColor;</span><br><span class="line">        dfs(image,row-<span class="number">1</span>,col,newColor);</span><br><span class="line">        dfs(image,row+<span class="number">1</span>,col,newColor);</span><br><span class="line">        dfs(image,row,col-<span class="number">1</span>,newColor);</span><br><span class="line">        dfs(image,row,col+<span class="number">1</span>,newColor);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="BFS-v2">BFS</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[][] dirs = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] floodFill(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor) &#123;</span><br><span class="line">        <span class="keyword">if</span> (image[sr][sc] == newColor) <span class="keyword">return</span> image;</span><br><span class="line">        <span class="keyword">int</span> m = image.length;</span><br><span class="line">        <span class="keyword">int</span> n = image[<span class="number">0</span>].length;</span><br><span class="line">        Queue&lt;<span class="keyword">int</span>[]&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;sr, sc&#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> color = image[sr][sc];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] temp  = queue.poll();</span><br><span class="line">            image[temp[<span class="number">0</span>]][temp[<span class="number">1</span>]] = newColor;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] dir : dirs) &#123;</span><br><span class="line">                <span class="keyword">int</span> x = temp[<span class="number">0</span>] + dir[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">int</span> y = temp[<span class="number">1</span>] + dir[<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (x&gt;= <span class="number">0</span> &amp;&amp; x &lt; m &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y&lt; n &amp;&amp; image[x][y] == color) &#123;</span><br><span class="line">                    image[x][y] = newColor;</span><br><span class="line">                    queue.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;x,y&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Leetcode Cracking</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>Code-Review</tag>
+        <tag>Graph</tag>
+        <tag>BFS</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
 </search>
