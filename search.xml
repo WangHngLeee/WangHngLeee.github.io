@@ -7582,4 +7582,53 @@ Input:</p>
         <tag>DFS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Review | Medium | 1145. Binary Tree Coloring Game</title>
+    <url>/2020/10/17/1145.%20Binary%20Tree%20Coloring%20Game/</url>
+    <content><![CDATA[<h2 id="table-tr-td-bgcolor-F5B041-font-color-white-1145-Binary-Tree-Coloring-Game-font-td-tr-table"><table><tr><td bgcolor="#F5B041"><font color="white">1145. Binary Tree Coloring Game</font></td></tr></table></h2>
+<p><a target="_blank" href="https://leetcode.com/problems/binary-tree-coloring-game/"><font size="4">🔗  Leetcode Link</font></a></p>
+<p>Two players play a turn based game on a binary tree. We are given the <code>root</code> of this binary tree, and the number of nodes <code>n</code> in the tree. <code>n</code> is odd, and each node has a distinct value from <code>1</code> to <code>n</code>.</p>
+<p>Initially, the first player names a value <code>x</code> with <code>1 &lt;= x &lt;= n</code>, and the second player names a value <code>y</code> with <code>1 &lt;= y &lt;= n</code> and <code>y != x</code>. The first player colors the node with value <code>x</code> red, and the second player colors the node with value <code>y</code> blue.</p>
+<p>Then, the players take turns starting with the first player. In each turn, that player chooses a node of their color (red if player 1, blue if player 2) and colors an <strong>uncolored</strong> neighbor of the chosen node (either the left child, right child, or parent of the chosen node.)</p>
+<p>If (and only if) a player cannot choose such a node in this way, they must pass their turn. If both players pass their turn, the game ends, and the winner is the player that colored more nodes.</p>
+<p>You are the second player. If it is possible to choose such a <code>y</code> to ensure you win the game, return <code>true</code>. If it is not possible, return <code>false</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2019/08/01/1480-binary-tree-coloring-game.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root = [1,2,3,4,5,6,7,8,9,10,11], n = 11, x = 3</span><br><span class="line">Output: true</span><br><span class="line">Explanation: The second player can choose the node with value 2.</span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>root</code> is the root of a binary tree with <code>n</code> nodes and distinct node values from <code>1</code> to <code>n</code>.</li>
+<li><code>n</code> is odd.</li>
+<li><code>1 &lt;= x &lt;= n &lt;= 100</code></li>
+</ul>
+<p><em><a id="more"></a></em></p>
+<h3 id="Solution">Solution</h3>
+<p>We first find the <code>left</code> and <code>right</code> childs of the given <code>x</code>. Once we got them, we can get the child count of <code>x's</code> parent node.</p>
+<p>Here has three option we can choose:</p>
+<ol>
+<li>
+<p>If the left childs is bigger than half of the total nodes :<code>left child</code> &gt; <code>n/2</code>:</p>
+<p>Then the second player can win if choose the left child of x.</p>
+</li>
+<li>
+<p>If the right childs is bigger than half of the total nodes :<code>right child</code> &gt; <code>n/2</code>:</p>
+<p>Then the second player can win if choose the right child of x.</p>
+</li>
+<li>
+<p>If the childs of parent of x is bigger than n/2 : <code>n - (left + right + 1</code> &gt; <code>n/2</code>:</p>
+<p>Then the second player can win if choose the parent of x.</p>
+</li>
+</ol>
+<h3 id="Code">Code</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> leftchild, rightchild, parentchild = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">btreeGameWinningMove</span><span class="params">(TreeNode root, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        count(root,x,n);</span><br><span class="line">        parentchild = n - (leftchild + rightchild + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(leftchild &gt; n/<span class="number">2</span> || rightchild &gt; n/<span class="number">2</span> || parentchild &gt; n/<span class="number">2</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = count(root.left, x, n);</span><br><span class="line">        <span class="keyword">int</span> r = count(root.right, x, n);</span><br><span class="line">        <span class="keyword">if</span>(root.val == x)&#123;</span><br><span class="line">            leftchild = l;</span><br><span class="line">            rightchild = r;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l + r + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Leetcode Cracking</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>Code-Review</tag>
+        <tag>Tree</tag>
+      </tags>
+  </entry>
 </search>
